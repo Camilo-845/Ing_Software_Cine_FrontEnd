@@ -1,0 +1,18 @@
+<style>
+    .sidebar-sticky {
+      position: sticky;
+      top: 50px; /* Fija el submenú en la parte superior */
+      z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+      background-color: #fff; /* Fondo para evitar superposición visual con otros elementos */
+    }
+</style>
+
+<div class="m-3">
+    <div class="btn-group sidebar-sticky" role="group" aria-label="Basic example">
+        <a [routerLink]="['listar']" type="button" class="btn btn-primary">listar</a>
+        <a [routerLink]="['agregar']" type="button" class="btn btn-primary">agregar</a>
+        <a [routerLink]="['editar']" type="button" class="btn btn-primary">editar</a>
+        <a [routerLink]="['eliminar']" type="button" class="btn btn-primary">eliminar</a>
+    </div>
+    <router-outlet></router-outlet>
+</div>
