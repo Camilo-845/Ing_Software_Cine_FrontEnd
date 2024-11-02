@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tablero',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterModule, CommonModule],
   templateUrl: './tablero.component.html',
   styleUrl: './tablero.component.css'
 })
