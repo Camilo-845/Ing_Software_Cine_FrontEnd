@@ -3,12 +3,12 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-inicio',
+  selector: 'app-sub-menu-dash-board',
   standalone: true,
   imports: [RouterModule, CommonModule],
-  templateUrl: './inicio.component.html',
-  styleUrl: './inicio.component.css'
+  templateUrl: './sub-menu-dash-board.component.html',
+  styleUrl: './sub-menu-dash-board.component.css'
 })
-export class InicioComponent {
+export class SubMenuDashBoardComponent {
 
 }
