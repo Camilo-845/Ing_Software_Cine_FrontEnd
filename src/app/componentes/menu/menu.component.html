@@ -1,30 +1,58 @@
 <div>
-    <div class="px-3 py-2 text-bg-dark border-bottom">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-          </a>
+  <div class="px-3 py-2 text-bg-dark border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
 
-          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-            <li>
-              <div class="text-center">
-                <i class="fa-solid fa-house text-center"></i>
-                <a class="nav-link text-white  d-block" [routerLink]="['/home']">
-                  Home
-                </a>
-              </div>
-            </li>
-            <li>
-              <div class="text-center">
-                <i class="fa-solid fa-gauge-simple text-center"></i>
-                <a class="nav-link text-white" [routerLink]="['/dashboard/clientes']">
-                Dashboard
-                </a>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <li>
+            <div class="text-center">
+              <i class="fa-solid fa-house text-center"></i>
+              <a class="nav-link text-white  d-block" [routerLink]="['/home']">
+                Home
+              </a>
+            </div>
+          </li>
+          <li>
+            <div class="text-center">
+              <i class="fa-solid fa-gauge-simple text-center"></i>
+              <a class="nav-link text-white" [routerLink]="['/dashboard/clientes']">
+              Dashboard
+              </a>
+            </div>
+          </li>
+          <li>
+            <div class="text-center">
+              <i class="fa-brands fa-jedi-order"></i>
+              <a [routerLink]="['/orders']" class="nav-link text-white">
+                Orders
+              </a>
+            </div>
+          </li>
+          <li>
+            <div class="text-center">
+              <i class="fa-brands fa-windows"></i>
+              <a [routerLink]="['/products']" class="nav-link text-white">
+                Products
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
+  </div>
+  <div class="px-3 py-2 border-bottom mb-3">
+    <div class="container d-flex flex-wrap justify-content-center">
+      <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+      </form>
+
+      <div class="text-end">
+        <button type="button" [routerLink]="['/login']" class="btn btn-light text-dark me-2">Login</button>
+        <button type="button" [routerLink]="['/sign-up']" class="btn btn-primary">Sign-up</button>
+      </div>
+    </div>
+  </div>
 </div>
