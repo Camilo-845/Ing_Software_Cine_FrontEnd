@@ -1,4 +1,13 @@
-<div class="position-sticky pt-3 sidebar-sticky">
+<style>
+  .sidebar-sticky {
+    position: sticky;
+    top: 30px; /* Fija el submenú en la parte superior */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+    background-color: #fff; /* Fondo para evitar superposición visual con otros elementos */
+  }
+</style>
+
+<div class="position-sticky pt-3 sidebar-sticky sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
         <a  [routerLink]="['/dashboard/clientes']" class="nav-link active" aria-current="page">
