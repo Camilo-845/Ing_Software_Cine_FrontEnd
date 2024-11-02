@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { CabeceraComponent } from '../cabecera/cabecera.component';
+import { SubMenuDashBoardComponent } from '../sub-menu-dash-board/sub-menu-dash-board.component';
 
 @Component({
   selector: 'app-tablero',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterModule, CommonModule, CabeceraComponent, SubMenuDashBoardComponent],
   templateUrl: './tablero.component.html',
   styleUrl: './tablero.component.css'
 })
