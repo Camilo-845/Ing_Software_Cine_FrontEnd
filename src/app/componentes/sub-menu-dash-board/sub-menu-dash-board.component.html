@@ -1,54 +1,57 @@
-<div>
-  <style>
-    .nav-link.active {
-      color: #fff;
-      background-color: rgb(0, 110, 255); 
-    }
-  </style>
-  
-  <div class="position-sticky pt-3 sidebar-sticky">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a [routerLink]="['/tablero/clientes']" class="nav-link" 
-           [routerLinkActive]="['active']" 
-           [routerLinkActiveOptions]="{ exact: false }">
-          <!-- Icono de clientes -->
-          Clientes
-        </a>
-      </li>
-      <li class="nav-item">
-        <a [routerLink]="['/tablero/comidas']" class="nav-link" 
-           [routerLinkActive]="['active']" 
-           [routerLinkActiveOptions]="{ exact: false }">
-          <!-- Icono de comidas -->
-          Comidas
-        </a>
-      </li>
-      <li class="nav-item">
-        <a [routerLink]="['/tablero/reservaciones']" class="nav-link" 
-           [routerLinkActive]="['active']" 
-           [routerLinkActiveOptions]="{ exact: false }">
-          <!-- Icono de reservaciones -->
-          Reservaciones
-        </a>
-      </li>
-      <li class="nav-item">
-        <a [routerLink]="['/tablero/cines']" class="nav-link" 
-           [routerLinkActive]="['active']" 
-           [routerLinkActiveOptions]="{ exact: false }">
-          <!-- Icono de cines -->
-          Cines
-        </a>
-      </li>
-      <li class="nav-item">
-        <a [routerLink]="['/tablero/carteleras']" class="nav-link" 
-           [routerLinkActive]="['active']" 
-           [routerLinkActiveOptions]="{ exact: false }">
-           <i class="fa-solid fa-clapperboard"></i>
-          Carteleras
-        </a>
-      </li>
-    </ul>
-  </div>
-  
+<style>
+  .nav-link.active {
+    color: #fff;
+    background-color: rgb(0, 110, 255); 
+  }
+  .sidebar-sticky {
+    position: sticky;
+    top: 30px; /* Fija el submenú en la parte superior */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+    background-color: #fff; /* Fondo para evitar superposición visual con otros elementos */
+  }
+</style>
+
+<div class="position-sticky pt-3 sidebar-sticky">
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a [routerLink]="['/tablero/clientes']" class="nav-link" 
+         [routerLinkActive]="['active']" 
+         [routerLinkActiveOptions]="{ exact: false }">
+        <!-- Icono de clientes -->
+        Clientes
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/tablero/comidas']" class="nav-link" 
+         [routerLinkActive]="['active']" 
+         [routerLinkActiveOptions]="{ exact: false }">
+        <!-- Icono de comidas -->
+        Comidas
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/tablero/reservaciones']" class="nav-link" 
+         [routerLinkActive]="['active']" 
+         [routerLinkActiveOptions]="{ exact: false }">
+        <!-- Icono de reservaciones -->
+        Reservaciones
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/tablero/cines']" class="nav-link" 
+         [routerLinkActive]="['active']" 
+         [routerLinkActiveOptions]="{ exact: false }">
+        <!-- Icono de cines -->
+        Cines
+      </a>
+    </li>
+    <li class="nav-item">
+      <a [routerLink]="['/tablero/carteleras']" class="nav-link" 
+         [routerLinkActive]="['active']" 
+         [routerLinkActiveOptions]="{ exact: false }">
+         <i class="fa-solid fa-clapperboard"></i>
+        Carteleras
+      </a>
+    </li>
+  </ul>
 </div>
