@@ -8,11 +8,10 @@
 </style>
 
 <div class="m-3">
-    <div class="btn-group sidebar-sticky" role="group" aria-label="Basic example">
-        <a [routerLink]="['listar']" type="button" class="btn btn-primary">listar</a>
-        <a [routerLink]="['agregar']" type="button" class="btn btn-primary">agregar</a>
-        <a [routerLink]="['editar']" type="button" class="btn btn-primary">editar</a>
-        <a [routerLink]="['eliminar']" type="button" class="btn btn-primary">eliminar</a>
+    <div class="btn-group sidebar-sticky my-3" role="group" aria-label="Basic example">
+        @for (option of options; track $index) {
+            <app-button [ref]="option" [text]="option" styles="mx-1 px-4"/>
+        }
     </div>
     <router-outlet></router-outlet>
 </div>
