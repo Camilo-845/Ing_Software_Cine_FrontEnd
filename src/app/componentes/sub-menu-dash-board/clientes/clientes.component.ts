@@ -11,5 +11,5 @@ import { ButtonComponent } from '../../utils/button/button.component';
   styleUrl: './clientes.component.css'
 })
 export class ClientesComponent {
-  options: String[] = ['listar', 'buscar','agregar', 'editar', 'eliminar'];
+  options: string[] = ['listar', 'buscar','agregar', 'editar', 'eliminar'];
 }
