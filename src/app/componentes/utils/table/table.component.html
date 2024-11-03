@@ -1,0 +1,21 @@
+<table class="table table-striped table-sm">
+    <thead>
+        <tr>
+            @for (header of headers; track $index) {
+            <th scope="col">
+                    {{ header }}
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (row of data; track $index) {
+            <tr>
+                @for (cell of getKeys(row); track $index) {
+                    <td>
+                        {{ row[cell] }}
+                    </td>
+                }
+            </tr>
+        }
+</table>
