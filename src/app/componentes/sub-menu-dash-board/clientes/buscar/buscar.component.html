@@ -1,0 +1,13 @@
+<div>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
+                <label for="inputCartelera">Id Cartelera</label>
+                <input type="Cartelera" class="form-control" id="inputCartelera" placeholder="Id Cartelera">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Mostrar</button>
+    </form>
+
+    <app-table [headers]="headers" [data]="data"/>
+</div>
