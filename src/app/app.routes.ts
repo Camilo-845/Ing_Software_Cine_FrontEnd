@@ -33,19 +33,19 @@ import { EditarComponent as EditarCine } from './componentes/sub-menu-dash-board
 import { EliminarComponent as EliminarCine } from './componentes/sub-menu-dash-board/cines/eliminar/eliminar.component';
 
 import { ListarComponent as ListarCartelera } from './componentes/sub-menu-dash-board/carteleras/listar/listar.component';
+import { BuscarComponent as BuscarCartelera } from './componentes/sub-menu-dash-board/carteleras/buscar/buscar.component';
 import { AgregarComponent as AgregarCartelera } from './componentes/sub-menu-dash-board/carteleras/agregar/agregar.component';
 import { EditarComponent as EditarCartelera } from './componentes/sub-menu-dash-board/carteleras/editar/editar.component';
 import { EliminarComponent as EliminarCartelera } from './componentes/sub-menu-dash-board/carteleras/eliminar/eliminar.component';
 
-
 export const routes: Routes = [
-  { path: 'home', component: InicioComponent },
-  { path: 'orders', component: OrdenesComponent },
-  { path: 'products', component: ProductosComponent },
-  { path: 'login', component: IngresoComponent },
-  { path: 'sign-up', component: RegistroComponent },
+  { path: 'inicio', component: InicioComponent },
+  { path: 'ordenes', component: OrdenesComponent },
+  { path: 'productos', component: ProductosComponent },
+  { path: 'ingreso', component: IngresoComponent },
+  { path: 'registro', component: RegistroComponent },
   {
-    path: 'dashboard', component: TableroComponent,
+    path: 'tablero', component: TableroComponent,
     children: [
       {
         path: "clientes", component: ClientesComponent,
@@ -87,6 +87,7 @@ export const routes: Routes = [
         path: "carteleras", component: CartelerasComponent,
         children: [
           { path: 'listar', component: ListarCartelera },
+          { path: 'buscar', component: BuscarCartelera},
           { path: 'agregar', component: AgregarCartelera },
           { path: 'editar', component: EditarCartelera },
           { path: 'eliminar', component: EliminarCartelera }
@@ -94,6 +95,6 @@ export const routes: Routes = [
       }
     ]
   },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path: '**', component: ErrorcitoComponent }
 ];
