@@ -32,6 +32,8 @@ import { ListarComponent as ListarCine } from './componentes/sub-menu-dash-board
 import { AgregarComponent as AgregarCine } from './componentes/sub-menu-dash-board/cines/agregar/agregar.component';
 import { EditarComponent as EditarCine } from './componentes/sub-menu-dash-board/cines/editar/editar.component';
 import { EliminarComponent as EliminarCine } from './componentes/sub-menu-dash-board/cines/eliminar/eliminar.component';
+import { BuscarComponent as BuscarCine } from './componentes/sub-menu-dash-board/cines/buscar/buscar.component';
+
 
 import { ListarComponent as ListarCartelera } from './componentes/sub-menu-dash-board/carteleras/listar/listar.component';
 import { BuscarComponent as BuscarCartelera } from './componentes/sub-menu-dash-board/carteleras/buscar/buscar.component';
@@ -80,6 +82,7 @@ export const routes: Routes = [
         path: "cines", component: CinesComponent,
         children: [
           { path: 'listar', component: ListarCine },
+          { path: 'buscar', component: BuscarCine },
           { path: 'agregar', component: AgregarCine },
           { path: 'editar', component: EditarCine },
           { path: 'eliminar', component: EliminarCine }
@@ -89,7 +92,7 @@ export const routes: Routes = [
         path: "carteleras", component: CartelerasComponent,
         children: [
           { path: 'listar', component: ListarCartelera },
-          { path: 'buscar', component: BuscarCartelera},
+          { path: 'buscar', component: BuscarCartelera },
           { path: 'agregar', component: AgregarCartelera },
           { path: 'editar', component: EditarCartelera },
           { path: 'eliminar', component: EliminarCartelera }
