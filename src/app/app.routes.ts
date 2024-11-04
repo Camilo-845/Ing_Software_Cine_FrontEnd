@@ -16,6 +16,7 @@ import { ListarComponent as ListarCliente } from './componentes/sub-menu-dash-bo
 import { AgregarComponent as AgregarCliente } from './componentes/sub-menu-dash-board/clientes/agregar/agregar.component';
 import { EditarComponent as EditarCliente } from './componentes/sub-menu-dash-board/clientes/editar/editar.component';
 import { EliminarComponent as EliminarCliente } from './componentes/sub-menu-dash-board/clientes/eliminar/eliminar.component';
+import { BuscarComponent as BuscarCliente } from './componentes/sub-menu-dash-board/clientes/buscar/buscar.component';
 
 import { ListarComponent as ListarComida } from './componentes/sub-menu-dash-board/comidas/listar/listar.component';
 import { AgregarComponent as AgregarComida } from './componentes/sub-menu-dash-board/comidas/agregar/agregar.component';
@@ -51,6 +52,7 @@ export const routes: Routes = [
         path: "clientes", component: ClientesComponent,
         children: [
           { path: 'listar', component: ListarCliente },
+          { path: 'buscar', component: BuscarCliente },
           { path: 'agregar', component: AgregarCliente },
           { path: 'editar', component: EditarCliente },
           { path: 'eliminar', component: EliminarCliente }
