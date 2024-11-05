@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { InicioComponent } from './componentes/inicio/inicio.component';
 import { TableroComponent } from './componentes/tablero/tablero.component';
 import { ErrorcitoComponent } from './componentes/errorcito/errorcito.component';
 import { ClientesComponent } from './componentes/sub-menu-dash-board/clientes/clientes.component';
@@ -42,13 +41,12 @@ import { EditarComponent as EditarCartelera } from './componentes/sub-menu-dash-
 import { EliminarComponent as EliminarCartelera } from './componentes/sub-menu-dash-board/carteleras/eliminar/eliminar.component';
 
 export const routes: Routes = [
-  { path: 'inicio', component: InicioComponent },
+  { path: 'inicio', component: TableroComponent },
   { path: 'ordenes', component: OrdenesComponent },
   { path: 'productos', component: ProductosComponent },
   { path: 'ingreso', component: IngresoComponent },
   { path: 'registro', component: RegistroComponent },
   {
-    path: 'tablero', component: TableroComponent,
     children: [
       {
         path: "clientes", component: ClientesComponent,
