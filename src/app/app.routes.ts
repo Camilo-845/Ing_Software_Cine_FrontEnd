@@ -6,8 +6,6 @@ import { ComidasComponent } from './componentes/sub-menu-dash-board/comidas/comi
 import { ReservacionesComponent } from './componentes/sub-menu-dash-board/reservaciones/reservaciones.component';
 import { CinesComponent } from './componentes/sub-menu-dash-board/cines/cines.component';
 import { CartelerasComponent } from './componentes/sub-menu-dash-board/carteleras/carteleras.component';
-import { OrdenesComponent } from './componentes/ordenes/ordenes.component';
-import { ProductosComponent } from './componentes/productos/productos.component';
 import { IngresoComponent } from './componentes/ingreso/ingreso.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 
@@ -42,62 +40,65 @@ import { EliminarComponent as EliminarCartelera } from './componentes/sub-menu-d
 
 export const routes: Routes = [
   { path: 'inicio', component: TableroComponent },
-  { path: 'ordenes', component: OrdenesComponent },
-  { path: 'productos', component: ProductosComponent },
   { path: 'ingreso', component: IngresoComponent },
   { path: 'registro', component: RegistroComponent },
   {
     children: [
       {
-        path: "clientes", component: ClientesComponent,
+        path: 'clientes',
+        component: ClientesComponent,
         children: [
           { path: 'listar', component: ListarCliente },
           { path: 'buscar', component: BuscarCliente },
           { path: 'agregar', component: AgregarCliente },
           { path: 'editar', component: EditarCliente },
-          { path: 'eliminar', component: EliminarCliente }
-        ]
+          { path: 'eliminar', component: EliminarCliente },
+        ],
       },
       {
-        path: "comidas", component: ComidasComponent,
+        path: 'comidas',
+        component: ComidasComponent,
         children: [
           { path: 'listar', component: ListarComida },
           { path: 'agregar', component: AgregarComida },
           { path: 'editar', component: EditarComida },
-          { path: 'eliminar', component: EliminarComida }
-        ]
+          { path: 'eliminar', component: EliminarComida },
+        ],
       },
       {
-        path: "reservaciones", component: ReservacionesComponent,
+        path: 'reservaciones',
+        component: ReservacionesComponent,
         children: [
           { path: 'listar', component: ListarReservacion },
           { path: 'agregar', component: AgregarReservacion },
           { path: 'editar', component: EditarReservacion },
-          { path: 'eliminar', component: EliminarReservacion }
-        ]
+          { path: 'eliminar', component: EliminarReservacion },
+        ],
       },
       {
-        path: "cines", component: CinesComponent,
+        path: 'cines',
+        component: CinesComponent,
         children: [
           { path: 'listar', component: ListarCine },
           { path: 'buscar', component: BuscarCine },
           { path: 'agregar', component: AgregarCine },
           { path: 'editar', component: EditarCine },
-          { path: 'eliminar', component: EliminarCine }
-        ]
+          { path: 'eliminar', component: EliminarCine },
+        ],
       },
       {
-        path: "carteleras", component: CartelerasComponent,
+        path: 'carteleras',
+        component: CartelerasComponent,
         children: [
           { path: 'listar', component: ListarCartelera },
           { path: 'buscar', component: BuscarCartelera },
           { path: 'agregar', component: AgregarCartelera },
           { path: 'editar', component: EditarCartelera },
-          { path: 'eliminar', component: EliminarCartelera }
-        ]
-      }
-    ]
+          { path: 'eliminar', component: EliminarCartelera },
+        ],
+      },
+    ],
   },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
-  { path: '**', component: ErrorcitoComponent }
+  { path: '**', component: ErrorcitoComponent },
 ];
