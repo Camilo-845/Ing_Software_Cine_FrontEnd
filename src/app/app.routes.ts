@@ -6,8 +6,6 @@ import { ComidasComponent } from './componentes/sub-menu-dash-board/comidas/comi
 import { ReservacionesComponent } from './componentes/sub-menu-dash-board/reservaciones/reservaciones.component';
 import { CinesComponent } from './componentes/sub-menu-dash-board/cines/cines.component';
 import { CartelerasComponent } from './componentes/sub-menu-dash-board/carteleras/carteleras.component';
-import { IngresoComponent } from './componentes/ingreso/ingreso.component';
-import { RegistroComponent } from './componentes/registro/registro.component';
 
 import { ListarComponent as ListarCliente } from './componentes/sub-menu-dash-board/clientes/listar/listar.component';
 import { AgregarComponent as AgregarCliente } from './componentes/sub-menu-dash-board/clientes/agregar/agregar.component';
@@ -40,9 +38,9 @@ import { EliminarComponent as EliminarCartelera } from './componentes/sub-menu-d
 
 export const routes: Routes = [
   { path: 'inicio', component: TableroComponent },
-  { path: 'ingreso', component: IngresoComponent },
-  { path: 'registro', component: RegistroComponent },
   {
+    path: 'tablero',
+    component: TableroComponent,
     children: [
       {
         path: 'clientes',
