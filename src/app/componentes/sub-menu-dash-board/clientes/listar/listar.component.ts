@@ -29,7 +29,20 @@ export class ListarComponent implements OnInit {
     this.getClientesPagination();
   }
 
+  onBack(): void {
+    if (this.page > 1) {
+      this.page--;
+      this.getClientesPagination();
+    }
+  }
+
+  onAdd(): void {
+    this.page++;
+    this.getClientesPagination();
+  }
+
   private getClientesPagination(): void {
+    this.clientes = [];
     this.clienteService
       .getPagination(this.page, this.limit)
       .subscribe((data) => {
