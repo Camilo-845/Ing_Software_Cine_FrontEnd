@@ -1,5 +1,5 @@
 export interface Cliente {
-  idCliente: number;
+  idCliente?: number;
   nombreCliente: String;
   numeroIdentidad: String;
   estado: boolean;
