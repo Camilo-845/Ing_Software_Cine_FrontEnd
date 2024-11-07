@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import {
   API_CLIENTE,
   API_CLIENTE_ADD,
+  API_CLIENTE_DELETE,
   API_CLIENTE_LIST,
   API_CLIENTE_PAGINATION,
 } from '../../utils/URIs';
@@ -31,5 +32,9 @@ export class ClienteService {
 
   public createClient(cliente: Cliente): Observable<any> {
     return this.httpClient.post<Cliente>(API_CLIENTE_ADD, cliente);
+  }
+
+  public deleteCliente(id: number): Observable<any> {
+    return this.httpClient.delete(API_CLIENTE_DELETE + `/${id}`);
   }
 }
