@@ -1,19 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../../utils/button/button.component';
 import { TableComponent } from '../../../utils/table/table.component';
 import { Cliente } from '../../../../interfaces/cliente';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ClienteService } from '../../../../servicios/api/cliente.service';
 
 @Component({
   selector: 'app-buscar',
   standalone: true,
-  imports: [ TableComponent],
+  imports: [TableComponent, ReactiveFormsModule],
   templateUrl: './buscar.component.html',
-  styleUrl: './buscar.component.css'
+  styleUrl: './buscar.component.css',
 })
 export class BuscarComponent {
-  headers = ['ID', 'Nombre', 'Numero Identidad', 'Ubicacion', 'State', 'Fecha Nacimiento'];
-  data: Cliente[] = [
-    { id_persona: 1, nombre_persona: 'Juan', numero_identidad: '0801199900000', id_ubicacion: 1, state: true, fecha_nacimiento_persona: new Date().getFullYear() },
+  private clienteService = inject(ClienteService);
+  inputForm = new FormGroup({
+    idInput: new FormControl(''),
+  });
+
+  headers = [
+    'ID',
+    'Nombre',
+    'Numero Identidad',
+    'Ubicacion',
+    'State',
+    'Fecha Nacimiento',
   ];
+
+  cliente: Cliente[] = [];
+
+  public onSubmit(): void {
+    const { idInput } = this.inputForm.value;
+    if (idInput) {
+      this.cliente = [];
+      this.getClienteById(Number(idInput));
+    }
+  }
+
+  private getClienteById(id: number): void {
+    this.clienteService.getById(id).subscribe((cliente) => {
+      cliente.map((c) => {
+        this.cliente.push({
+          idCliente: c.idCliente,
+          nombreCliente: c.nombreCliente,
+          numeroIdentidad: c.numeroIdentidad,
+          ubicacion: c.ubicacion,
+          estado: c.estado,
+          fechaNacimiento: c.fechaNacimiento,
+        });
+      });
+    });
+  }
 }

@@ -1,13 +1,19 @@
 <div>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
-                <label for="inputCartelera">Id Cartelera</label>
-                <input type="Cartelera" class="form-control" id="inputCartelera" placeholder="Id Cartelera">
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Mostrar</button>
-    </form>
+  <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-4 mb-4">
+        <label for="inputCartelera">ID Cliente</label>
+        <input
+          formControlName="idInput"
+          type="number"
+          class="form-control"
+          id="idInput"
+          placeholder="ID Cliente"
+        />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+  </form>
 
-    <app-table [headers]="headers" [data]="data"/>
+  <app-table [headers]="headers" [data]="cliente" />
 </div>
