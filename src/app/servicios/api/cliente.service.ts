@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { API_CLIENTE_LIST, API_CLIENTE_PAGINATION } from '../../utils/URIs';
+import {
+  API_CLIENTE,
+  API_CLIENTE_LIST,
+  API_CLIENTE_PAGINATION,
+} from '../../utils/URIs';
 import { Observable } from 'rxjs';
 import { Cliente } from '../../interfaces/cliente';
 
@@ -18,5 +22,9 @@ export class ClienteService {
     return this.httpClient.get<Cliente[]>(
       API_CLIENTE_PAGINATION + `?page=${page}&limit=${size}`
     );
+  }
+
+  public getById(id: number): Observable<Cliente[]> {
+    return this.httpClient.get<Cliente[]>(API_CLIENTE + `/${id}`);
   }
 }
