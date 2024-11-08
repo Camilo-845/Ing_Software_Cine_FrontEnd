@@ -1,0 +1,13 @@
+<div>
+  <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-4 mb-4">
+        <label for="inputCartelera">ID Reservacion</label>
+        <input formControlName="idInput" type="number" class="form-control" id="idInput" placeholder="ID Reservacion" />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+  </form>
+
+  <app-table [headers]="headers" [data]="reservacion" />
+</div>
