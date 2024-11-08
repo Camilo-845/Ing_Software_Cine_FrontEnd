@@ -1,23 +1,26 @@
 <div class="d-flex flex-column-reverse">
     
-  
+    <div class="d-flex">
+      <button type="button" (click)="nextPage()" class="btn btn-sm btn-outline-secondary">siguiente</button>
+      <button type="button" (click)="prevPage()" class="btn btn-sm btn-outline-secondary">anterior</button>
+    </div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Position Column -->
-        <ng-container matColumnDef="id">
+        <ng-container matColumnDef="idComida">
           <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.idComida}} </td>
         </ng-container>
   
         <!-- Name Column -->
-        <ng-container matColumnDef="nombre">
+        <ng-container matColumnDef="nombreComida">
           <th mat-header-cell *matHeaderCellDef> Nombre</th>
-          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.nombreComida}} </td>
         </ng-container>
   
         <!-- Price Column -->
-        <ng-container matColumnDef="precio">
+        <ng-container matColumnDef="precioComida">
           <th mat-header-cell *matHeaderCellDef> Precio</th>
-          <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.precioComida}} </td>
         </ng-container>
   
         <tr mat-header-row *matHeaderRowDef="columnas"></tr>
@@ -34,6 +37,6 @@
       <mat-form-field>
         <mat-label>Buscar</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Nombre" #input>
-    </mat-form-field>
+      </mat-form-field>
   </div>
   
