@@ -1,11 +1,18 @@
 <div>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
-                <label for="inputCartelera">Id Comida</label>
-                <input type="number" class="form-control" id="inputCartelera" placeholder="###">
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Eliminar</button>
-    </form>
+  <form [formGroup]="createForm" (ngSubmit)="handleSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-4 mb-4">
+        <!-- Solo margen inferior -->
+        <label for="inputCartelera">Id Comida</label>
+        <input
+          type="number"
+          class="form-control"
+          id="inputCartelera"
+          placeholder="###"
+          formControlName="id"
+        />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
+  </form>
 </div>
