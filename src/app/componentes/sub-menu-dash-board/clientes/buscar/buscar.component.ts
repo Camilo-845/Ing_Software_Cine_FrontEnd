@@ -39,6 +39,10 @@ export class BuscarComponent {
 
   private getClienteById(id: number): void {
     this.clienteService.getById(id).subscribe((cliente) => {
+      if (cliente.length === 0) {
+        alert('No se encontro el cliente con el id: ' + id);
+      }
+
       cliente.map((c) => {
         this.cliente.push({
           idCliente: c.idCliente,
