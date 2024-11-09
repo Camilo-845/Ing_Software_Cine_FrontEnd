@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ChangeDetectorRef, OnInit, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, inject } from '@angular/core';
 import { MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +12,8 @@ import { Comida } from '../../../../interfaces/comidas';
 import { ComidaService } from '../../../../servicios/api/comidas.service';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+
 @Component({
   selector: 'app-listar',
   standalone: true,
@@ -22,13 +24,16 @@ import { provideAnimations } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ],
   providers: [provideAnimations()],
   templateUrl: './listar.component.html',
-  styleUrls: ['./listar.component.css']
+  styleUrls: ['./listar.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListarComponent implements OnInit{
+  readonly dialog = inject(MatDialog);
   private comidaService = inject(ComidaService);
   private page:number = 1;
   private limit:number = 10;
@@ -53,6 +58,16 @@ export class ListarComponent implements OnInit{
       this.getList();
     }
   }
+  openDialog(id:number) {
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.comidaService.deleteComida(id).subscribe((res)=>{
+          this.getList()
+        });
+      }
+    });
+  }
   private getList(): void {
     this.comidaService.getAll(this.page, this.limit).subscribe((res) => {
       this.DATA = res.map((el) => ({
@@ -63,5 +78,13 @@ export class ListarComponent implements OnInit{
       this.dataSource.data = this.DATA;
     });
   }
-  
 }
+
+@Component({
+  selector: 'dialogo',
+  templateUrl: 'dialogo.html',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DialogContentExampleDialog {}

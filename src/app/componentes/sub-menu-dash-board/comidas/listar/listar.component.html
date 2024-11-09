@@ -35,7 +35,7 @@
             <mat-icon>edit</mat-icon>
             <span>editar</span>
           </button>
-          <button mat-menu-item [routerLink]="['/tablero/comidas/eliminar', element.idComida]">
+          <button mat-menu-item (click)="openDialog(element.idComida)">
             <mat-icon>delete</mat-icon>
             <span>eliminar</span>
           </button>
