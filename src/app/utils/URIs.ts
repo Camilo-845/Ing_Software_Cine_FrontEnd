@@ -13,3 +13,4 @@ export const API_COMIDAS_LIST = API_COMIDAS + '/getall';
 export const API_COMIDAS_ADD = API_COMIDAS + '/add';
 export const API_COMIDAS_UPDATE = API_COMIDAS + '/update';
 export const API_COMIDAS_DELETE = API_COMIDAS + '/delete';
+export const API_COMIDAS_GET_BY_ID = API_COMIDAS + '/get/';

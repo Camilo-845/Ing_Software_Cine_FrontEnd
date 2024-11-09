@@ -3,13 +3,28 @@ import { MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+
 import { Comida } from '../../../../interfaces/comidas';
 import { ComidaService } from '../../../../servicios/api/comidas.service';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-listar',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    RouterModule
+  ],
+  providers: [provideAnimations()],
   templateUrl: './listar.component.html',
   styleUrls: ['./listar.component.css']
 })
@@ -21,7 +36,7 @@ export class ListarComponent implements OnInit{
   ngOnInit(): void {
     this.getList();
   }
-  columnas: string[] = ['idComida', 'nombreComida', 'precioComida'];
+  columnas: string[] = ['idComida', 'nombreComida', 'precioComida', 'opciones'];
   dataSource = new MatTableDataSource<Comida>(this.DATA);
 
   applyFilter(event: Event) {

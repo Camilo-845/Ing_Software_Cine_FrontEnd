@@ -5,6 +5,7 @@ import {
   API_COMIDAS_LIST,
   API_COMIDAS_UPDATE,
   API_COMIDAS_DELETE,
+  API_COMIDAS_GET_BY_ID,
 } from '../../utils/URIs';
 import { Observable } from 'rxjs';
 import { Comida } from '../../interfaces/comidas';
@@ -28,5 +29,9 @@ export class ComidaService {
   }
   public updateComida(data: Comida): Observable<any> {
     return this.httpClient.put(API_COMIDAS_UPDATE,data);
+  }
+
+  public getComidaById(idComida:number) : Observable<any>{
+    return this.httpClient.get(API_COMIDAS_GET_BY_ID+idComida);
   }
 }

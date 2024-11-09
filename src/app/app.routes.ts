@@ -59,8 +59,8 @@ export const routes: Routes = [
         children: [
           { path: 'listar', component: ListarComida },
           { path: 'agregar', component: AgregarComida },
-          { path: 'editar', component: EditarComida },
-          { path: 'eliminar', component: EliminarComida },
+          { path: 'editar/:id', component: EditarComida },
+          { path: 'eliminar/:id', component: EliminarComida },
         ],
       },
       {
