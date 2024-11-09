@@ -9,6 +9,7 @@ import {
 } from '../../utils/URIs';
 import { Observable } from 'rxjs';
 import { Cliente } from '../../interfaces/cliente';
+import { PaginationResponse } from '../../interfaces/pagination-response';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +21,11 @@ export class ClienteService {
     return this.httpClient.get<Cliente[]>(API_CLIENTE_LIST);
   }
 
-  public getPagination(page: number, size: number): Observable<Cliente[]> {
-    return this.httpClient.get<Cliente[]>(
+  public getPagination(
+    page: number,
+    size: number
+  ): Observable<PaginationResponse> {
+    return this.httpClient.get<PaginationResponse>(
       API_CLIENTE_PAGINATION + `?page=${page}&limit=${size}`
     );
   }
