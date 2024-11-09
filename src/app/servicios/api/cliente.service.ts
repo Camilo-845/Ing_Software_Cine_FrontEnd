@@ -6,10 +6,10 @@ import {
   API_CLIENTE_DELETE,
   API_CLIENTE_LIST,
   API_CLIENTE_PAGINATION,
-} from '../../utils/URIs';
+} from '@utils/URIs';
 import { Observable } from 'rxjs';
-import { Cliente } from '../../interfaces/cliente';
-import { PaginationResponse } from '../../interfaces/pagination-response';
+import { Cliente } from '@interfaces/cliente';
+import { PaginationResponse } from '@interfaces/pagination-response';
 
 @Injectable({
   providedIn: 'root',

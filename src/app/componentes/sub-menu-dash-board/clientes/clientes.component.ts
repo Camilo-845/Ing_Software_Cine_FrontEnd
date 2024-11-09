@@ -1,16 +1,10 @@
-import {
-  Component,
-  inject,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { map, Observable } from 'rxjs';
-import { ClienteService } from '../../../servicios/api/cliente.service';
+import { Observable } from 'rxjs';
+import { ClienteService } from '@services/api/cliente.service';
+import { PaginationResponse } from '@interfaces/pagination-response';
 import { TableClientesComponent } from './table-clientes/table-clientes.component';
-import { PaginationResponse } from '../../../interfaces/pagination-response';
 
 @Component({
   selector: 'app-clientes',

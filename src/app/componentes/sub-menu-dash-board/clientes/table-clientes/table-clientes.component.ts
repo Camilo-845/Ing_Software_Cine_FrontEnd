@@ -6,10 +6,10 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Cliente } from '../../../../interfaces/cliente';
+import { Cliente } from '@interfaces/cliente';
 import { CommonModule, DatePipe } from '@angular/common';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
-import { PaginationResponse } from '../../../../interfaces/pagination-response';
+import { PaginationResponse } from '@interfaces/pagination-response';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { AddModalComponent } from '../add-modal/add-modal.component';
 
@@ -74,14 +74,16 @@ export class TableClientesComponent implements OnChanges {
     }
   }
 
-  openModal(type: 'delete' | 'add', idCliente: number): void {
+  openModal(type: 'delete' | 'add', idCliente?: number): void {
     if (type === 'delete') {
       this.deleteModalActive = true;
     } else if (type === 'add') {
       this.addModalActive = true;
     }
 
-    this.selectedClientId = idCliente;
+    if (idCliente) {
+      this.selectedClientId = idCliente;
+    }
   }
 
   showError(e: any): void {
