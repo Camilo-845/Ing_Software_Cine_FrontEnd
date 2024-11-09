@@ -1,24 +1,27 @@
 <style>
     .sidebar-sticky {
-        position: sticky;
-        top: 50px;
-        /* Fija el submenú en la parte superior */
-        z-index: 1000;
-        /* Asegúrate de que esté por encima de otros elementos */
-        background-color: #fff;
-        /* Fondo para evitar superposición visual con otros elementos */
+      position: sticky;
+      top: 50px; /* Fija el submenú en la parte superior */
+      z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+      background-color: #fff; /* Fondo para evitar superposición visual con otros elementos */
     }
-</style>
-
-<div class="m-3">
-    <div class="mb-3 pt-3">
-        <h1 class="h2 mb-2 border-bottom">Reservaciones</h1>
-        <div class="btn-group mt-2" role="group" aria-label="Basic example">
-            <a [routerLink]="['listar']" type="button" class="btn btn-primary">Listar</a>
-            <a [routerLink]="['agregar']" type="button" class="btn btn-primary">Agregar</a>
-            <a [routerLink]="['editar']" type="button" class="btn btn-primary">Editar</a>
-            <a [routerLink]="['eliminar']" type="button" class="btn btn-primary">Eliminar</a>
-        </div>
-        <router-outlet></router-outlet>
+  </style>
+  
+  <div class="m-3">
+    <div
+      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+    >
+      <h1 class="h2">Reservaciones</h1>
     </div>
-</div>
+    <div
+      class="btn-group my-3"
+      role="group"
+      aria-label="Basic example"
+    >
+      @for (option of options; track $index) {
+      <app-button [ref]="option" [text]="option" styles="mx-1 px-4" />
+      }
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+  
