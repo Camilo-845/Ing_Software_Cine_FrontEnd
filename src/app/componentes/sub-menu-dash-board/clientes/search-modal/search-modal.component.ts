@@ -46,9 +46,21 @@ export class SearchModalComponent implements AfterViewChecked, OnDestroy {
 
   handleSubmit(): void {
     const { search } = this.searchForm.value;
+    if (!this.validateNumberType(search)) {
+      this.onError.emit({ message: 'Ingrese un número válido' });
+      this.closeModal();
+      return;
+    }
+
     if (search) {
       this.searchClientById(parseInt(search));
     }
+  }
+
+  private validateNumberType(value: string | null | undefined): boolean {
+    if (value) return !isNaN(parseInt(value));
+
+    return false;
   }
 
   private async searchClientById(id: number) {
