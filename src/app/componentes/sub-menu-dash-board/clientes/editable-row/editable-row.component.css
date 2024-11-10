@@ -1,0 +1,17 @@
+input {
+  text-align: center;
+  margin: auto;
+  max-width: fit-content;
+}
+
+select {
+  text-align: center;
+  margin: auto;
+  max-width: fit-content;
+}
+
+button {
+  border: none;
+  margin: 2px 0px;
+  padding: 0px 10px;
+}

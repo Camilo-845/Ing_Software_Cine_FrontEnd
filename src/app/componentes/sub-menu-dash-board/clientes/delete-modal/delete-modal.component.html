@@ -1,0 +1,25 @@
+@if (isActive) {
+<div class="delete-modal" (click)="onBackdropClick($event)">
+  <div class="modal-box">
+    <h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente</h5>
+    <p>
+      ¿Está seguro que desea eliminar el cliente <strong>{{ clientId }}</strong
+      >?
+    </p>
+    <div class="buttons-box">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        data-dismiss="modal"
+        (click)="closeModal()"
+      >
+        Cancelar
+      </button>
+      <button type="button" class="btn btn-danger" (click)="deleteClient()">
+        Eliminar
+      </button>
+    </div>
+  </div>
+</div>
+
+}

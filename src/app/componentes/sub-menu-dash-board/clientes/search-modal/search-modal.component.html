@@ -1,0 +1,19 @@
+@if (isActive) {
+<div class="search-modal" (click)="onBackdropClick($event)">
+  <div class="modal-box">
+    <form [formGroup]="searchForm" (submit)="handleSubmit()">
+      <input
+        formControlName="search"
+        id="searchBar"
+        type="text"
+        class="form-control search-bar"
+        placeholder="Buscar cliente"
+        name="search"
+      />
+      <button id="submit" type="submit" class="btn btn-primary search-button">
+        <i class="bi bi-search"></i>
+      </button>
+    </form>
+  </div>
+</div>
+}
