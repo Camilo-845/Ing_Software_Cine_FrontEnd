@@ -7,12 +7,6 @@ import { ReservacionesComponent } from './componentes/sub-menu-dash-board/reserv
 import { CinesComponent } from './componentes/sub-menu-dash-board/cines/cines.component';
 import { CartelerasComponent } from './componentes/sub-menu-dash-board/carteleras/carteleras.component';
 
-import { ListarComponent as ListarCliente } from './componentes/sub-menu-dash-board/clientes/listar/listar.component';
-import { AgregarComponent as AgregarCliente } from './componentes/sub-menu-dash-board/clientes/agregar/agregar.component';
-import { EditarComponent as EditarCliente } from './componentes/sub-menu-dash-board/clientes/editar/editar.component';
-import { EliminarComponent as EliminarCliente } from './componentes/sub-menu-dash-board/clientes/eliminar/eliminar.component';
-import { BuscarComponent as BuscarCliente } from './componentes/sub-menu-dash-board/clientes/buscar/buscar.component';
-
 import { ListarComponent as ListarComida } from './componentes/sub-menu-dash-board/comidas/listar/listar.component';
 import { AgregarComponent as AgregarComida } from './componentes/sub-menu-dash-board/comidas/agregar/agregar.component';
 import { EditarComponent as EditarComida } from './componentes/sub-menu-dash-board/comidas/editar/editar.component';
@@ -46,13 +40,6 @@ export const routes: Routes = [
       {
         path: 'clientes',
         component: ClientesComponent,
-        children: [
-          { path: 'listar', component: ListarCliente },
-          { path: 'buscar', component: BuscarCliente },
-          { path: 'agregar', component: AgregarCliente },
-          { path: 'editar', component: EditarCliente },
-          { path: 'eliminar', component: EliminarCliente },
-        ],
       },
       {
         path: 'comidas',

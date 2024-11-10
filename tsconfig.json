@@ -19,10 +19,13 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@interfaces/*": ["./src/app/interfaces/*"],
+      "@services/*": ["./src/app/servicios/*"],
+      "@utils/*": ["./src/app/utils/*"],
+      "@clients/*": ["./src/app/componentes/sub-menu-dash-board/clientes/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

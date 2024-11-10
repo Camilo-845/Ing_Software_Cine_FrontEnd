@@ -1,0 +1,78 @@
+@if (isActive) {
+<div class="add-modal" (click)="onBackdropClick($event)">
+  <div class="modal-box">
+    <h5>Agregar Cliente</h5>
+    <form
+      class="form-signin"
+      [formGroup]="addClientForm"
+      (ngSubmit)="handleFormSubmit()"
+    >
+      <div class="form-label-group my-2">
+        <input
+          formControlName="inputName"
+          type="text"
+          id="inputName"
+          autocomplete="name"
+          class="form-control my-2"
+          placeholder="Nombre"
+          required
+        />
+      </div>
+      <div class="form-label-group my-2">
+        <input
+          formControlName="inputIdNumber"
+          type="text"
+          id="inputIdNumber"
+          class="form-control my-2"
+          placeholder="Numero de identidad"
+          required
+        />
+      </div>
+      <div class="form-label-group my-2">
+        <select
+          formControlName="inputLocation"
+          id="inputLocation"
+          class="form-select"
+          aria-label="Select Location"
+          name="locations"
+          required
+        >
+          <option class="form-control" value="" disabled selected>
+            Ubicacion
+          </option>
+          @for (l of locations$ | async; track $index) {
+          <option value="{{ l.idUbicacion }}">{{ l.nombreUbicacion }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-label-group my-2">
+        <input
+          formControlName="inputBirthDate"
+          type="date"
+          id="inputBirthDate"
+          class="form-control my-2"
+          placeholder="Fecha de nacimiento"
+          required
+        />
+      </div>
+      <button
+        class="btn btn-md btn-primary btn-block m-2"
+        type="submit"
+        [disabled]="!addClientForm.valid"
+      >
+        <i class="bi bi-plus"></i>
+        Agregar
+      </button>
+      <button
+        class="btn btn-md btn-danger btn-block m-2"
+        type="button"
+        (click)="closeModal()"
+      >
+        <i class="bi bi-x"></i>
+        Cancelar
+      </button>
+    </form>
+  </div>
+</div>
+
+}
