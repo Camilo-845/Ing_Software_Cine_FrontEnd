@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './carteleras.component.html',
-  styleUrl: './carteleras.component.css'
+  styleUrl: './carteleras.component.css',
 })
 export class CartelerasComponent implements OnInit, OnDestroy {
   carteleras: Cartelera[] = [];
@@ -22,7 +22,7 @@ export class CartelerasComponent implements OnInit, OnDestroy {
   constructor(private carteleraService: CarteleraService) {}
 
   ngOnInit(): void {
-    this.loadCarteleras(); 
+    this.loadCarteleras();
   }
 
   ngOnDestroy(): void {
