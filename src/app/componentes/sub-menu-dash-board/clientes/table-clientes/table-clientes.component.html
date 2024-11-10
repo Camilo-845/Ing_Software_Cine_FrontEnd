@@ -4,16 +4,16 @@
   (onClose)="switchModal('delete')"
   (onError)="showError($event)"
   (onSuccess)="showSuccess($event)"
-  />
-  
-  <app-add-modal
+/>
+
+<app-add-modal
   [isActive]="addModalActive"
   (onError)="showError($event)"
   (onClose)="switchModal('add')"
   (onSuccess)="showSuccess($event)"
-  />
-  
-  <app-search-modal
+/>
+
+<app-search-modal
   [isActive]="searchModalActive"
   (onError)="showError($event)"
   (onClose)="switchModal('search')"
@@ -42,7 +42,8 @@
     </tr>
   </thead>
   <tbody>
-    @for (cliente of clientes; track cliente.idCliente) {
+    @for (cliente of clientes; track cliente.idCliente) { @if (selectedClientId
+    !== cliente.idCliente) {
     <tr id="client{{ cliente }}">
       <td>
         {{ cliente.idCliente }}
@@ -68,7 +69,10 @@
       </td>
       <td>
         <div>
-          <button class="btn btn-primary px-2 py-1 mx-2">
+          <button
+            class="btn btn-primary px-2 py-1 mx-2"
+            (click)="handleEditClient(cliente)"
+          >
             <i class="fas fa-edit"></i>
           </button>
 
@@ -81,7 +85,15 @@
         </div>
       </td>
     </tr>
-    }
+    }@else {
+    <tr
+      app-editable-row
+      [selectedClient]="selectedClient"
+      (onCancel)="handleCancelEdit()"
+      (onSucess)="showSuccess($event)"
+      (onError)="showError($event)"
+    ></tr>
+    } }
   </tbody>
 </table>
 <app-pagination

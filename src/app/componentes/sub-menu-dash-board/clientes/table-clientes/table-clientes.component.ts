@@ -1,18 +1,22 @@
 import {
   Component,
   EventEmitter,
+  inject,
   Input,
   OnChanges,
   Output,
   SimpleChanges,
 } from '@angular/core';
 import { Cliente } from '@interfaces/cliente';
-import { CommonModule, DatePipe } from '@angular/common';
+import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 import { PaginationResponse } from '@interfaces/pagination-response';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { AddModalComponent } from '../add-modal/add-modal.component';
 import { SearchModalComponent } from '../search-modal/search-modal.component';
+import { Location } from '@interfaces/location';
+import { Observable } from 'rxjs';
+import { EditableRowComponent } from '../editable-row/editable-row.component';
 
 @Component({
   selector: 'app-table-clientes',
@@ -24,6 +28,7 @@ import { SearchModalComponent } from '../search-modal/search-modal.component';
     PaginationComponent,
     AddModalComponent,
     SearchModalComponent,
+    EditableRowComponent,
   ],
   templateUrl: './table-clientes.component.html',
   styleUrl: './table-clientes.component.css',
@@ -35,20 +40,36 @@ export class TableClientesComponent implements OnChanges {
   @Output() handlePagination = new EventEmitter<number>();
   @Output() successDelete = new EventEmitter<void>();
 
+  addModalActive: boolean = false;
   clientes!: Cliente[];
   deleteModalActive: boolean = false;
-  addModalActive: boolean = false;
-  searchModalActive: boolean = false;
-  selectedClientId: number = 0;
-  lastPage!: number;
   error: string = '';
+  searchModalActive: boolean = false;
+  locations$!: Observable<Location[]>;
+  lastPage!: number;
   success: string = '';
+  selectedClientId: number = 0;
+  selectedClient: Cliente | null = null;
+  previouseClient: Cliente | null = null;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['paginationResponse'] && this.paginationResponse) {
       this.updateLastPage();
       this.loadClientes();
     }
+  }
+
+  handleEditClient(cliente: Cliente): void {
+    if (cliente.idCliente) {
+      this.selectedClientId = cliente.idCliente;
+      this.previouseClient = { ...cliente };
+      this.selectedClient = cliente;
+    }
+  }
+
+  handleCancelEdit(): void {
+    this.selectedClientId = 0;
+    window.location.reload();
   }
 
   searchClientHandler(cliente: Cliente[]): void {

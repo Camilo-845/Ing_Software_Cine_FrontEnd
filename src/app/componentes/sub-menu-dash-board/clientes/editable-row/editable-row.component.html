@@ -1,0 +1,66 @@
+<td>{{ selectedClient!.idCliente }}</td>
+<td>
+  <input
+    [(ngModel)]="selectedClient!.nombreCliente"
+    value="{{ selectedClient!.nombreCliente }}"
+    class="form-control"
+    required
+  />
+</td>
+<td>
+  <input
+    [(ngModel)]="selectedClient!.numeroIdentidad"
+    value="{{ selectedClient!.numeroIdentidad }}"
+    class="form-control"
+    required
+  />
+</td>
+<td>
+  <select
+    id="inputLocation"
+    class="form-select"
+    aria-label="Select Location"
+    name="locations"
+    [(ngModel)]="selectedClient!.ubicacion"
+    required
+  >
+    <option class="form-control" value="" disabled>Ubicacion</option>
+    @for (l of locations$ | async; track $index) {
+    <option value="{{ l.idUbicacion }}">
+      {{ l.nombreUbicacion }}
+    </option>
+    }
+  </select>
+</td>
+<td>
+  <select
+    id="inputState"
+    class="form-select"
+    name="state"
+    aria-label="Select State"
+    [(ngModel)]="selectedClient!.estado"
+    required
+  >
+    <option class="form-control" [value]="true">Activo</option>
+    <option class="form-control" [value]="false">Inactivo</option>
+  </select>
+</td>
+<td>
+  <input
+    [(ngModel)]="selectedClient!.fechaNacimiento"
+    required
+    class="form-control"
+    type="date"
+  />
+</td>
+<td>
+  <div>
+    <button class="btn btn-primary py-1 mx-2" (click)="saveEdit()">
+      <i class="fas fa-check"></i>
+    </button>
+
+    <button class="btn btn-danger py-1 mx-2" (click)="cancelEdit()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</td>

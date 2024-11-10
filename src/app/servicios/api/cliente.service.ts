@@ -7,6 +7,7 @@ import {
   API_CLIENTE_LIST,
   API_CLIENTE_LOCATIONS,
   API_CLIENTE_PAGINATION,
+  API_CLIENTE_UPDATE,
 } from '@utils/URIs';
 import { Observable } from 'rxjs';
 import { Cliente } from '@interfaces/cliente';
@@ -46,5 +47,9 @@ export class ClienteService {
 
   public deleteCliente(id: number): Observable<any> {
     return this.httpClient.delete(API_CLIENTE_DELETE + `/${id}`);
+  }
+
+  public editCliente(cliente: Cliente): Observable<any> {
+    return this.httpClient.put<Cliente>(API_CLIENTE_UPDATE, cliente);
   }
 }
