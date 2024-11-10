@@ -1,7 +1,7 @@
 <app-delete-modal
   [isActive]="deleteModalActive"
   [clientId]="selectedClientId"
-  (onClose)="closeModal('delete')"
+  (onClose)="switchModal('delete')"
   (onError)="showError($event)"
   (onSuccess)="showSuccess($event)"
   />
@@ -9,14 +9,14 @@
   <app-add-modal
   [isActive]="addModalActive"
   (onError)="showError($event)"
-  (onClose)="closeModal('add')"
+  (onClose)="switchModal('add')"
   (onSuccess)="showSuccess($event)"
   />
   
   <app-search-modal
   [isActive]="searchModalActive"
   (onError)="showError($event)"
-  (onClose)="closeModal('search')"
+  (onClose)="switchModal('search')"
   (handleSearch)="searchClientHandler($event)"
 />
 
@@ -29,12 +29,12 @@
       </th>
       }
       <th>
-        <button class="btn btn-primary add-button" (click)="openModal('add')">
+        <button class="btn btn-primary add-button" (click)="switchModal('add')">
           <i class="fas fa-plus"></i>
         </button>
         <button
           class="btn btn-primary search-button"
-          (click)="openModal('search')"
+          (click)="switchModal('search')"
         >
           <i class="bi bi-search"></i>
         </button>
@@ -74,7 +74,7 @@
 
           <button
             class="btn btn-danger px-2 py-1 mx-2"
-            (click)="openModal('delete', cliente.idCliente!)"
+            (click)="switchModal('delete', cliente.idCliente!)"
           >
             <i class="fas fa-trash-alt"></i>
           </button>

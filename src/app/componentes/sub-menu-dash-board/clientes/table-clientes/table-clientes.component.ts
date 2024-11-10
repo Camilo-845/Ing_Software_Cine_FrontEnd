@@ -73,38 +73,24 @@ export class TableClientesComponent implements OnChanges {
     this.lastPage = this.paginationResponse?.totalPages || 1;
   }
 
-  closeModal(type: 'add' | 'delete' | 'search'): void {
+  switchModal(
+    type: 'delete' | 'add' | 'search',
+    idCliente?: number,
+    forceClose: boolean = false
+  ): void {
     switch (type) {
       case 'delete':
-        this.deleteModalActive = false;
+        this.deleteModalActive = forceClose ? false : !this.deleteModalActive;
         break;
       case 'add':
-        this.addModalActive = false;
+        this.addModalActive = forceClose ? false : !this.addModalActive;
         break;
       case 'search':
-        this.searchModalActive = false;
-        break;
-      default:
-        break;
-    }
-  }
-
-  openModal(type: 'delete' | 'add' | 'search', idCliente?: number): void {
-    switch (type) {
-      case 'delete':
-        this.deleteModalActive = true;
-        break;
-      case 'add':
-        this.addModalActive = true;
-        break;
-      case 'search':
-        this.searchModalActive = true;
+        this.searchModalActive = forceClose ? false : !this.searchModalActive;
         break;
     }
 
-    if (idCliente) {
-      this.selectedClientId = idCliente;
-    }
+    this.selectedClientId = idCliente ?? 0;
   }
 
   showError(e: any): void {
