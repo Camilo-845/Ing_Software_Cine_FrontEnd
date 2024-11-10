@@ -10,6 +10,18 @@
         <th>Pelicula</th>
         <th>Fecha Inicio</th>
         <th>Fecha Final</th>
+
+        <th>
+          <button class="btn btn-primary add-button px-2 py-1 mx-2" 
+            (click)="2">
+            <i class="fas fa-plus"></i>
+          </button>
+          <button
+            class="btn btn-primary search-button px-2 py-1 mx-2"
+            (click)="1">
+            <i class="bi bi-search"></i>
+          </button>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +31,20 @@
         <td>{{cartelera.nombrePelicula}}</td>
         <td>{{cartelera.fechaInicio | date}}</td>
         <td>{{cartelera.fechaFinal | date}}</td>
+
+        <td>
+          <div>
+            <button class="btn btn-primary px-2 py-1 mx-2"
+                (click)="1">
+              <i class="fas fa-edit"></i>
+            </button>
+  
+            <button class="btn btn-danger px-2 py-1 mx-2"
+              (click)="1">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -27,5 +53,5 @@
 <div class="pagination">
   <button class="btn" (click)="previousPage()" [disabled]="page === 1">Anterior</button>
   <span>Página {{ page }}</span>
-  <button class="btn" (click)="nextPage()">Siguiente</button>
+  <button class="btn" (click)="nextPage()" [disabled]="page === total">Siguiente</button>
 </div>

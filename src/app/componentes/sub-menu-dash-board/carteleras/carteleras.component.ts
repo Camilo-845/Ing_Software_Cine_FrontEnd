@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Cartelera } from '@interfaces/cartelera';
@@ -12,11 +12,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './carteleras.component.html',
   styleUrl: './carteleras.component.css'
 })
-export class CartelerasComponent implements OnInit {
+export class CartelerasComponent implements OnInit, OnDestroy {
   carteleras: Cartelera[] = [];
   page = 1; 
-  size = 10; 
-  private carteleraSubscription: Subscription = new Subscription();
+  size = 10;
+  total = 0; 
+  private carteleraSubscription!: Subscription;
 
   constructor(private carteleraService: CarteleraService) {}
 
@@ -25,13 +26,17 @@ export class CartelerasComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.carteleraSubscription.unsubscribe();
+    if(this.carteleraSubscription){
+      this.carteleraSubscription.unsubscribe();
+    }
   }
 
   loadCarteleras(): void {
-    this.carteleraService.getPaginatedCarteleras(this.page, this.size).subscribe({
-      next: (data: Cartelera[]) => {
-        this.carteleras = data;
+    this.carteleraSubscription = this.carteleraService.getPaginatedCarteleras(this.page, this.size)
+    .subscribe({
+      next: (data: any) => {
+        this.carteleras = data.data;
+        this.total = Math.ceil(data.total.count/this.size);
       },
       error: error => {
         console.error('Error al cargar carteleras:', error);
@@ -39,9 +44,24 @@ export class CartelerasComponent implements OnInit {
     });
   }
 
+  searchCartelera(nombre:string){
+    this.carteleraSubscription = this.carteleraService.getByUbicacionCine(nombre)
+    .subscribe({
+      next: (data:  any) => {
+        this.carteleras = data.data;
+        this.total = 1;
+      },
+      error: (error) => {
+        console.error('Error al cargar la cartelera:', error);
+      }
+    })
+  }
+
   nextPage(): void {
-    this.page++;
-    this.loadCarteleras();
+    if(this.page < this.total){
+      this.page++;
+      this.loadCarteleras();
+    }
   }
 
   previousPage(): void {
