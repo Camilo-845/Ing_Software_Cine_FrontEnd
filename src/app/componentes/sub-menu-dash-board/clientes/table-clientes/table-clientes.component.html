@@ -4,13 +4,20 @@
   (onClose)="closeModal('delete')"
   (onError)="showError($event)"
   (onSuccess)="showSuccess($event)"
-/>
-
-<app-add-modal
+  />
+  
+  <app-add-modal
   [isActive]="addModalActive"
   (onError)="showError($event)"
   (onClose)="closeModal('add')"
   (onSuccess)="showSuccess($event)"
+  />
+  
+  <app-search-modal
+  [isActive]="searchModalActive"
+  (onError)="showError($event)"
+  (onClose)="closeModal('search')"
+  (handleSearch)="searchClientHandler($event)"
 />
 
 <table class="table table-striped table-sm text-center">
@@ -24,6 +31,12 @@
       <th>
         <button class="btn btn-primary add-button" (click)="openModal('add')">
           <i class="fas fa-plus"></i>
+        </button>
+        <button
+          class="btn btn-primary search-button"
+          (click)="openModal('search')"
+        >
+          <i class="bi bi-search"></i>
         </button>
       </th>
     </tr>

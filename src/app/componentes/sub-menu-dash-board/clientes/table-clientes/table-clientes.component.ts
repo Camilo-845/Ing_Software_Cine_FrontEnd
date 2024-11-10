@@ -12,6 +12,7 @@ import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 import { PaginationResponse } from '@interfaces/pagination-response';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { AddModalComponent } from '../add-modal/add-modal.component';
+import { SearchModalComponent } from '../search-modal/search-modal.component';
 
 @Component({
   selector: 'app-table-clientes',
@@ -22,6 +23,7 @@ import { AddModalComponent } from '../add-modal/add-modal.component';
     CommonModule,
     PaginationComponent,
     AddModalComponent,
+    SearchModalComponent,
   ],
   templateUrl: './table-clientes.component.html',
   styleUrl: './table-clientes.component.css',
@@ -36,6 +38,7 @@ export class TableClientesComponent implements OnChanges {
   clientes!: Cliente[];
   deleteModalActive: boolean = false;
   addModalActive: boolean = false;
+  searchModalActive: boolean = false;
   selectedClientId: number = 0;
   lastPage!: number;
   error: string = '';
@@ -46,6 +49,10 @@ export class TableClientesComponent implements OnChanges {
       this.updateLastPage();
       this.loadClientes();
     }
+  }
+
+  searchClientHandler(cliente: Cliente[]): void {
+    this.clientes = cliente;
   }
 
   changePage(action: number | 'prev' | 'next'): void {
@@ -66,19 +73,33 @@ export class TableClientesComponent implements OnChanges {
     this.lastPage = this.paginationResponse?.totalPages || 1;
   }
 
-  closeModal(type: 'add' | 'delete'): void {
-    if (type === 'add') {
-      this.addModalActive = false;
-    } else if (type === 'delete') {
-      this.deleteModalActive = false;
+  closeModal(type: 'add' | 'delete' | 'search'): void {
+    switch (type) {
+      case 'delete':
+        this.deleteModalActive = false;
+        break;
+      case 'add':
+        this.addModalActive = false;
+        break;
+      case 'search':
+        this.searchModalActive = false;
+        break;
+      default:
+        break;
     }
   }
 
-  openModal(type: 'delete' | 'add', idCliente?: number): void {
-    if (type === 'delete') {
-      this.deleteModalActive = true;
-    } else if (type === 'add') {
-      this.addModalActive = true;
+  openModal(type: 'delete' | 'add' | 'search', idCliente?: number): void {
+    switch (type) {
+      case 'delete':
+        this.deleteModalActive = true;
+        break;
+      case 'add':
+        this.addModalActive = true;
+        break;
+      case 'search':
+        this.searchModalActive = true;
+        break;
     }
 
     if (idCliente) {
