@@ -111,7 +111,7 @@ export class TableClientesComponent implements OnChanges {
     if (e?.error?.respuesta && e?.error?.mensaje) {
       this.error = `${e.error.respuesta}. ${e.error.mensaje}`;
     } else {
-      this.error = 'Ocurrió un error inesperado.';
+      this.error = e.message || 'Ocurrió un error inesperado.';
     }
 
     console.error(e);

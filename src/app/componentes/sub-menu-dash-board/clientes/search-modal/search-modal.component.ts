@@ -21,7 +21,7 @@ import { ClienteService } from '@services/api/cliente.service';
 export class SearchModalComponent implements AfterViewChecked, OnDestroy {
   @Input() isActive!: boolean;
   @Output() handleSearch = new EventEmitter<Cliente[]>();
-  @Output() onError = new EventEmitter<string>();
+  @Output() onError = new EventEmitter<any>();
   @Output() onClose = new EventEmitter<void>();
   private clienteService = inject(ClienteService);
   private formBuilder = inject(FormBuilder);
@@ -54,7 +54,13 @@ export class SearchModalComponent implements AfterViewChecked, OnDestroy {
   private async searchClientById(id: number) {
     this.clienteService.getById(id).subscribe({
       next: (response) => {
-        this.handleSearch.emit(response);
+        if (response.length >= 1) {
+          this.handleSearch.emit(response);
+        } else {
+          this.onError.emit({
+            message: 'No hemos podido encontrar al cliente ' + id,
+          });
+        }
       },
       error: (error) => {
         this.onError.emit(error);
