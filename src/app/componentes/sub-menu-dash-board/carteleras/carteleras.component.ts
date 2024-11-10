@@ -10,33 +10,37 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './carteleras.component.html',
-  styleUrl: './carteleras.component.css'
+  styleUrl: './carteleras.component.css',
 })
 export class CartelerasComponent implements OnInit {
   carteleras: Cartelera[] = [];
-  page = 1; 
-  size = 10; 
-  private carteleraSubscription: Subscription = new Subscription();
+  page = 1;
+  size = 10;
+  private carteleraSubscription: any;
 
   constructor(private carteleraService: CarteleraService) {}
 
   ngOnInit(): void {
-    this.loadCarteleras(); 
+    this.loadCarteleras();
   }
 
   ngOnDestroy(): void {
-    this.carteleraSubscription.unsubscribe();
+    if (this.carteleraSubscription) {
+      this.carteleraSubscription.unsubscribe();
+    }
   }
 
   loadCarteleras(): void {
-    this.carteleraService.getPaginatedCarteleras(this.page, this.size).subscribe({
-      next: (data: Cartelera[]) => {
-        this.carteleras = data;
-      },
-      error: error => {
-        console.error('Error al cargar carteleras:', error);
-      }
-    });
+    this.carteleraSubscription = this.carteleraService
+      .getPaginatedCarteleras(this.page, this.size)
+      .subscribe({
+        next: (data: Cartelera[]) => {
+          this.carteleras = data;
+        },
+        error: (error) => {
+          console.error('Error al cargar carteleras:', error);
+        },
+      });
   }
 
   nextPage(): void {
