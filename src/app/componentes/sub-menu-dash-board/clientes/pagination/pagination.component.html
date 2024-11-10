@@ -12,7 +12,10 @@
     </li>
 
     @for (p of getPages(); track $index) {
-    <li [ngClass]="{ active: p === currentPage }" id="page{{ p }}">
+    <li
+      [ngClass]="{ active: p === currentPage, current: p === currentPage }"
+      id="page{{ p }}"
+    >
       <button
         id="{{ p }}"
         type="button"
