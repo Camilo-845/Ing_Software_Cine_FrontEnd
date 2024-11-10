@@ -1,22 +1,21 @@
 import {
   Component,
   EventEmitter,
-  inject,
   Input,
   OnChanges,
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Cliente } from '@interfaces/cliente';
-import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
-import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
-import { PaginationResponse } from '@interfaces/pagination-response';
-import { PaginationComponent } from '../pagination/pagination.component';
-import { AddModalComponent } from '../add-modal/add-modal.component';
-import { SearchModalComponent } from '../search-modal/search-modal.component';
-import { Location } from '@interfaces/location';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Observable } from 'rxjs';
-import { EditableRowComponent } from '../editable-row/editable-row.component';
+import { Cliente } from '@interfaces/cliente';
+import { PaginationResponse } from '@interfaces/pagination-response';
+import { Location } from '@interfaces/location';
+import { DeleteModalComponent } from '@clients/delete-modal/delete-modal.component';
+import { PaginationComponent } from '@clients/pagination/pagination.component';
+import { AddModalComponent } from '@clients/add-modal/add-modal.component';
+import { SearchModalComponent } from '@clients/search-modal/search-modal.component';
+import { EditableRowComponent } from '@clients/editable-row/editable-row.component';
 
 @Component({
   selector: 'app-table-clientes',

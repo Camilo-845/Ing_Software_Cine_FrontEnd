@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { ClienteService } from '@services/api/cliente.service';
 import { PaginationResponse } from '@interfaces/pagination-response';
-import { TableClientesComponent } from './table-clientes/table-clientes.component';
+import { TableClientesComponent } from '@clients/table-clientes/table-clientes.component';
 
 @Component({
   selector: 'app-clientes',
