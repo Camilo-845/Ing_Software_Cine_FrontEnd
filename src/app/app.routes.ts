@@ -25,12 +25,6 @@ import { EliminarComponent as EliminarCine } from './componentes/sub-menu-dash-b
 
 import { BuscarComponent as BuscarCine } from './componentes/sub-menu-dash-board/cines/buscar/buscar.component';
 
-import { ListarComponent as ListarCartelera } from './componentes/sub-menu-dash-board/carteleras/listar/listar.component';
-import { BuscarComponent as BuscarCartelera } from './componentes/sub-menu-dash-board/carteleras/buscar/buscar.component';
-import { AgregarComponent as AgregarCartelera } from './componentes/sub-menu-dash-board/carteleras/agregar/agregar.component';
-import { EditarComponent as EditarCartelera } from './componentes/sub-menu-dash-board/carteleras/editar/editar.component';
-import { EliminarComponent as EliminarCartelera } from './componentes/sub-menu-dash-board/carteleras/eliminar/eliminar.component';
-
 export const routes: Routes = [
   { path: 'inicio', component: TableroComponent },
   {
@@ -76,13 +70,6 @@ export const routes: Routes = [
       {
         path: 'carteleras',
         component: CartelerasComponent,
-        children: [
-          { path: 'listar', component: ListarCartelera },
-          { path: 'buscar', component: BuscarCartelera },
-          { path: 'agregar', component: AgregarCartelera },
-          { path: 'editar', component: EditarCartelera },
-          { path: 'eliminar', component: EliminarCartelera },
-        ],
       },
     ],
   },

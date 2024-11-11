@@ -9,14 +9,21 @@ export const API_CLIENTE_UPDATE = API_CLIENTE + '/update';
 export const API_CLIENTE_DELETE = API_CLIENTE + '/delete';
 export const API_CLIENTE_LOCATIONS = API_CLIENTE + '/getLocations';
 
-//Reservaciones
+export const API_CARTELERA = API_URL + '/billboard';
+export const API_CARTELERA_LIST = API_CARTELERA + '/getall';
+export const API_CARTELERA_PAGINATION = API_CARTELERA + '/paginacion';
+export const API_CARTELERA_ADD = API_CARTELERA + '/addcito';
+export const API_CARTELERA_UPDATE = API_CARTELERA + '/update';
+export const API_CARTELERA_DELETE = API_CARTELERA + '/delete';
+export const API_CINE_LIST_FOR_CARTELERA = API_CARTELERA_LIST + '/cine';
+export const API_PELICULA_LIST_FOR_CARTELERA = API_CARTELERA_LIST + '/pelicula';
+
 export const API_RESERVACIONES = API_URL + '/reservation';
 export const API_RESERVACIONES_LIST = API_RESERVACIONES + '/getall';
 export const API_RESERVACIONES_PAGINATION = API_RESERVACIONES + '/pagination';
 export const API_RESERVACIONES_DELETE = API_RESERVACIONES + '/delete';
 export const API_RESERVACIONES_ADD = API_RESERVACIONES + '/add';
 
-//Comidas
 export const API_COMIDAS = API_URL + '/food';
 export const API_COMIDAS_LIST = API_COMIDAS + '/getall';
 export const API_COMIDAS_ADD = API_COMIDAS + '/add';
