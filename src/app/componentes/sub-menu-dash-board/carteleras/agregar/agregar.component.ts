@@ -75,7 +75,6 @@ export class AgregarComponent implements OnInit, OnDestroy{
         this.agregarSubscription = this.carteleraService.getCartelerasByidCine(this.idCine)
         .subscribe({
           next: (data2: Cartelera[]) =>{
-            console.log(data2)
             alert('La cartelera con id:' +data.idPeliculaCartelera+ " se ha creado con exito "+ 
               "en el cine "+data2[0].nombreUbicacion); 
             this.closePopup();

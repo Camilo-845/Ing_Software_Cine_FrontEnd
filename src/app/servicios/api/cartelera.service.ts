@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Cartelera } from '@interfaces/cartelera';
 import { Cine } from '@interfaces/cine';
 import { Pelicula } from '@interfaces/pelicula';
-import { API_CARTELERA_PAGINATION, API_CARTELERA_LIST, API_CARTELERA_ADD, API_CINE_LIST_FOR_CARTELERA, API_PELICULA_LIST_FOR_CARTELERA } from '@utils/URIs';
+import { API_CARTELERA_PAGINATION, API_CARTELERA_LIST, API_CARTELERA_ADD, API_CINE_LIST_FOR_CARTELERA, API_PELICULA_LIST_FOR_CARTELERA, API_CARTELERA_UPDATE } from '@utils/URIs';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -43,5 +43,9 @@ export class CarteleraService {
 
   createCartelera(cartelera: Cartelera):Observable<Cartelera>{
     return this.http.post<Cartelera>(API_CARTELERA_ADD,cartelera);
+  }
+
+  updateCartelera(cartelera: Cartelera):Observable<any>{
+    return this.http.put<Cartelera>(API_CARTELERA_UPDATE,cartelera);
   }
 }

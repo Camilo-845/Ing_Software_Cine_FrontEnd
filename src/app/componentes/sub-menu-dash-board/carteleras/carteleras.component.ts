@@ -5,12 +5,13 @@ import { Cartelera } from '@interfaces/cartelera';
 import { CarteleraService } from '@services/api/cartelera.service';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { AgregarComponent } from './agregar/agregar.component';  // Importa el componente Agregar
+import { AgregarComponent } from './agregar/agregar.component'; 
+import { EditarComponent } from './editar/editar.component';
 
 @Component({
   selector: 'app-carteleras',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule, AgregarComponent],  // Añade AgregarComponent aquí
+  imports: [RouterModule, CommonModule, FormsModule, AgregarComponent, EditarComponent], 
   templateUrl: './carteleras.component.html',
   styleUrl: './carteleras.component.css',
 })
@@ -89,6 +90,12 @@ export class CartelerasComponent implements OnInit, OnDestroy {
   previousPage(): void {
     if (this.page > 1) {
       this.page--;
+      this.loadCarteleras();
+    }
+  }
+  init(): void {
+    if (this.page > 1) {
+      this.page = 1;
       this.loadCarteleras();
     }
   }
