@@ -1,0 +1,14 @@
+<button class="btn btn-danger px-2 py-1 mx-2"
+    (click)="openPopup()">
+    <i class="fas fa-trash-alt"></i>
+</button>
+<div *ngIf="showPopup" class="overlay">
+    <div class="confirm-popup">
+      <h3>¿Estás seguro de querer eliminar la cartelera con id {{cartelera.idPeliculaCartelera}}?</h3>
+      <div class="confirm-actions">
+        <button (click)="deleteCartelera()">Sí</button>
+        <button (click)="closePopup()">No</button>
+      </div>
+    </div>
+  </div>
+  

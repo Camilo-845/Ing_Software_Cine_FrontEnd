@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AgregarComponent } from './agregar/agregar.component'; 
 import { EditarComponent } from './editar/editar.component';
+import { EliminarComponent } from './eliminar/eliminar.component';
 
 @Component({
   selector: 'app-carteleras',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule, AgregarComponent, EditarComponent], 
+  imports: [RouterModule, CommonModule, FormsModule, AgregarComponent, EditarComponent, EliminarComponent], 
   templateUrl: './carteleras.component.html',
   styleUrl: './carteleras.component.css',
 })
