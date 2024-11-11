@@ -1,13 +1,18 @@
-
 <div>
-  <form>
-      <div class="form-row">
-          <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
-              <label for="inputCartelera">Id Cine</label>
-              <input type="Cartelera" class="form-control" id="inputCartelera" placeholder="Id Cartelera">
-          </div>
-      </div>
-      
-      <button type="submit" class="btn btn-primary">Eliminar</button>
+  <form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
+    <div class="form-group col-md-4 mb-4">
+      <label for="inputCine">Id Cine</label>
+      <input
+        formControlName="idCine"
+        type="text"
+        class="form-control"
+        id="inputCine"
+        placeholder="ID"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
+    <div *ngIf="cineEliminado" class="alert alert-success mt-4" role="alert">
+      Cine eliminado correctamente
+    </div>
   </form>
 </div>

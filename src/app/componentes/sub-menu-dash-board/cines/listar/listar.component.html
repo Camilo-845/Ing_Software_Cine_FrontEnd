@@ -1,44 +1,11 @@
-
 <div class="table-responsive">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col">Id Cine</th>
-        <th scope="col">Id Ubicacion</th>
-        <th scope="col">Nombre Cine</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>19</td>
-        <td>BuenaVista</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>62</td>
-        <td>CommerceHub, Inc.</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>60</td>
-        <td>Cellectis S.A.</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>6</td>
-        <td>Royal Bank Of Canada</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>56</td>
-        <td>Vanguard Russell 2000 ETF</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>91</td>
-        <td>Union Bankshares, Inc.</td>
-      </tr>
-    </tbody>
-  </table>
+  <app-table [headers]="headers" [data]="cines"></app-table>
+  <div>
+    <button class="btn btn-primary" (click)="onBack()">Anterior</button>
+    <button class="btn btn-primary mx-3" (click)="onAdd()">Siguiente</button>
+  </div>
+  <!-- <div *ngFor="let cine of cines">
+    <button class="btn btn-warning" (click)="onEdit(cine.idCine)" *ngIf="cine.idCine !== undefined" >Editar</button>
+  </div> -->
 </div>
+
