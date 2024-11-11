@@ -13,6 +13,7 @@ import { EditarComponent as EditarComida } from './componentes/sub-menu-dash-boa
 import { EliminarComponent as EliminarComida } from './componentes/sub-menu-dash-board/comidas/eliminar/eliminar.component';
 
 import { ListarComponent as ListarReservacion } from './componentes/sub-menu-dash-board/reservaciones/listar/listar.component';
+import { BuscarComponent as BuscarReservacion } from './componentes/sub-menu-dash-board/reservaciones/buscar/buscar.component';
 import { AgregarComponent as AgregarReservacion } from './componentes/sub-menu-dash-board/reservaciones/agregar/agregar.component';
 import { EditarComponent as EditarReservacion } from './componentes/sub-menu-dash-board/reservaciones/editar/editar.component';
 import { EliminarComponent as EliminarReservacion } from './componentes/sub-menu-dash-board/reservaciones/eliminar/eliminar.component';
@@ -40,8 +41,8 @@ export const routes: Routes = [
         children: [
           { path: 'listar', component: ListarComida },
           { path: 'agregar', component: AgregarComida },
-          { path: 'editar', component: EditarComida },
-          { path: 'eliminar', component: EliminarComida },
+          { path: 'editar/:id', component: EditarComida },
+          { path: 'eliminar/:id', component: EliminarComida },
         ],
       },
       {
@@ -49,6 +50,7 @@ export const routes: Routes = [
         component: ReservacionesComponent,
         children: [
           { path: 'listar', component: ListarReservacion },
+          { path: 'buscar', component: BuscarReservacion},
           { path: 'agregar', component: AgregarReservacion },
           { path: 'editar', component: EditarReservacion },
           { path: 'eliminar', component: EliminarReservacion },

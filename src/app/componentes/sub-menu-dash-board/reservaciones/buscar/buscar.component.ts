@@ -1,22 +1,23 @@
 import { Component, inject } from '@angular/core';
 import { TableComponent } from '../../../utils/table/table.component';
-import { Reservacion } from '../../../../interfaces/reservacion';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ReservacionesService } from '../../../../servicios/api/reservaciones.service';
+import { Reservacion } from '../../../../interfaces/reservacion';
 
 @Component({
-  selector: 'app-listar',
+  selector: 'app-buscar',
   standalone: true,
-  imports: [TableComponent],
-  templateUrl: './listar.component.html',
-  styleUrl: './listar.component.css'
+  imports: [TableComponent, ReactiveFormsModule],
+  templateUrl: './buscar.component.html',
+  styleUrl: './buscar.component.css'
 })
-export class ListarComponent {
+export class BuscarComponent {
   private reservacionesService = inject(ReservacionesService);
-  private page = 1;
-  private limit = 10;
+  inputForm = new FormGroup({
+    idInput: new FormControl('')
+  });
 
-  reservaciones: Reservacion[] = [];
-  headers: String[] = [
+  headers = [
     'ID',
     'Nombre del cliente',
     'Id de la silla',
@@ -24,29 +25,23 @@ export class ListarComponent {
     'Precio'
   ];
 
-  ngOnInit(): void {
-    this.getClientesPagination();
-  }
+  reservacion: Reservacion[] = [];
 
-  onBack(): void {
-    if (this.page > 1) {
-      this.page--;
-      this.getClientesPagination();
+  public onSubmit(): void{
+    const {idInput} = this.inputForm.value;
+    if(idInput){
+      this.reservacion = [];
+      this.getReservacionById(Number(idInput));
     }
   }
 
-  onAdd(): void {
-    this.page++;
-    this.getClientesPagination();
-  }
-
-  private getClientesPagination(): void {
-    this.reservaciones = [];
+  private getReservacionById(id: number): void{
+    this.reservacion = [];
     this.reservacionesService
-      .getPagination(this.page, this.limit)
+      .getById(id)
       .subscribe((data) => {
         data.map((reservacion) => {
-          this.reservaciones.push({
+          this.reservacion.push({
             idReservacion: reservacion.idReservacion,
             nombrePersona: reservacion.nombrePersona,
             idSilla: reservacion.idSilla,

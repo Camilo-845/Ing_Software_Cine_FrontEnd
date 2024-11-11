@@ -1,17 +1,30 @@
 <div>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
-                <label for="inputPelicula">Nombre</label>
-                <input type="text" class="form-control" id="inputPelicula" placeholder="Nombre">
-            </div>
+    <form [formGroup]="createForm" (ngSubmit)="handleSubmit()">
+      <div class="form-row">
+        <div class="form-group col-md-4 mb-4">
+          <label for="inputNombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputNombre"
+            placeholder="Nombre"
+            formControlName="nombre"
+          />
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
-                <label for="inputPelicula">Precio</label>
-                <input type="number" class="form-control" id="inputPelicula" placeholder="Precio">
-            </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4 mb-4">
+          <label for="inputPrecio">Precio</label>
+          <input
+            type="number"
+            class="form-control"
+            id="inputPrecio"
+            placeholder="Precio"
+            formControlName="precio"
+          />
         </div>
-        <button type="submit" class="btn btn-primary">Crear</button>
+      </div>
+      <button type="submit" class="btn btn-primary">Crear</button>
     </form>
-</div>
+  </div>
+  

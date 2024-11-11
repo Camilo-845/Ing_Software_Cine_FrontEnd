@@ -1,20 +1,37 @@
-<div>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
-                <label for="inputCartelera">Id Comida</label>
-                <input type="Cartelera" class="form-control" id="inputCartelera" placeholder="Id Comida">
-            </div>
-            <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
-                <label for="inputCartelera">Nombre</label>
-                <input type="Cartelera" class="form-control" id="inputCartelera" placeholder="nombre">
-            </div>
-            <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
-                <label for="inputCartelera">Precio</label>
-                <input type="number" class="form-control" id="inputCartelera" placeholder="$$$">
-            </div>
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Editar</button>
+@if(loading){
+  <div class="d-flex justify-content-center">
+    <mat-spinner></mat-spinner>
+  </div>
+}@else{
+  <div>
+    <form [formGroup]="createForm" (ngSubmit)="handleSubmit()">
+      <div class="form-row">
+          <div class="form-group col-md-4 mb-4">
+            <!-- Solo margen inferior -->
+            <label for="inputCartelera">Nombre</label>
+            <input
+              type="Cartelera"
+              class="form-control"
+              id="inputCartelera"
+              formControlName="nombre"
+              placeholder="nombre"
+            />
+          </div>
+          <div class="form-group col-md-4 mb-4">
+            <!-- Solo margen inferior -->
+            <label for="inputCartelera">Precio</label>
+            <input
+              type="number"
+              class="form-control"
+              id="inputCartelera"
+              formControlName="precio"
+              placeholder="$$$"
+            />
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Editar</button>
+      <button type="button" class="btn btn-secondary mx-2" [routerLink]="['/tablero/comidas/listar']">Cancelar</button>
     </form>
-</div>
+  </div>
+}

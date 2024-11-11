@@ -23,7 +23,8 @@
     "paths": {
       "@interfaces/*": ["./src/app/interfaces/*"],
       "@services/*": ["./src/app/servicios/*"],
-      "@utils/*": ["./src/app/utils/*"]
+      "@utils/*": ["./src/app/utils/*"],
+      "@clients/*": ["./src/app/componentes/sub-menu-dash-board/clientes/*"]
     }
   },
   "angularCompilerOptions": {
