@@ -1,0 +1,46 @@
+<!-- Botón para abrir el popup -->
+<button class="btn btn-primary add-button" (click)="openPopup()">
+    <i class="fas fa-plus"></i>
+  </button>
+  
+  <!-- Popup (está oculto cuando showPopup es false) -->
+  <div *ngIf="showPopup" class="popup">
+    <div class="popup-content">
+      <h3>Nueva Cartelera</h3>
+  
+      <form (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <label for="select1">Cines: </label>
+          <select id="select1" [(ngModel)]="idCine" name="select1" required>
+            <option *ngFor="let cine of cines" [value]="cine.idCine">{{ cine.nombreUbicacion }}</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="select2">Peliculas: </label>
+          <select id="select2" [(ngModel)]="idPelicula" name="select2" required>
+            <option *ngFor="let pelicula of peliculas" [value]="pelicula.idPelicula">{{ pelicula.nombrePelicula }}</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="date1">Fecha Inicio:</label>
+          <input type="date" id="date1" [(ngModel)]="dateInicio" name="date1" required />
+        </div>
+  
+        <div class="form-group">
+          <label for="date2">Fecha Final:</label>
+          <input type="date" id="date2" [(ngModel)]="dateFin" name="date2" required />
+        </div>
+  
+        <div class="form-actions">
+          <button type="submit">Enviar</button>
+          <button type="button" (click)="closePopup()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Fondo oscuro (overlay) que aparece al abrir el popup -->
+  <div *ngIf="showPopup" class="overlay"></div>
+  

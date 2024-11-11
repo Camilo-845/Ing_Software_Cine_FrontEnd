@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cartelera } from '@interfaces/cartelera';
-import { API_CARTELERA_PAGINATION, API_CARTELERA_LIST, API_CARTELERA_ADD } from '@utils/URIs';
+import { Cine } from '@interfaces/cine';
+import { Pelicula } from '@interfaces/pelicula';
+import { API_CARTELERA_PAGINATION, API_CARTELERA_LIST, API_CARTELERA_ADD, API_CINE_LIST_FOR_CARTELERA, API_PELICULA_LIST_FOR_CARTELERA } from '@utils/URIs';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,18 +18,30 @@ export class CarteleraService {
     return this.http.get<Cartelera[]>(url);
   }
 
-  getIdByName(nombre:string):Observable<any>{
-    const url = `${API_CARTELERA_LIST}/nombre/${nombre}`;
+  getIdUbicacionByName(nombre:string):Observable<any>{
+    const url = `${API_CARTELERA_LIST}/nombreUbicacion/${nombre}`;
     return this.http.get<any>(url);
   }
 
-  getByUbicacionCine(idUbicacion:number): Observable<Cartelera[]>{
-    const url = `${API_CARTELERA_LIST}/id/${idUbicacion}`;
+  getCartelerasByidUbicacionCine(idUbicacion:number): Observable<Cartelera[]>{
+    const url = `${API_CARTELERA_LIST}/idUbicacion/${idUbicacion}`;
     return this.http.get<Cartelera[]>(url);
   }
 
+  getCartelerasByidCine(idCine:number): Observable<Cartelera[]>{
+    const url = `${API_CARTELERA_LIST}/idCine/${idCine}`;
+    return this.http.get<Cartelera[]>(url);
+  }
+
+  getCines():Observable<Cine[]>{
+    return this.http.get<Cine[]>(API_CINE_LIST_FOR_CARTELERA);
+  }
+
+  getPeliculas():Observable<Pelicula[]>{
+    return this.http.get<Pelicula[]>(API_PELICULA_LIST_FOR_CARTELERA);
+  }
+
   createCartelera(cartelera: Cartelera):Observable<Cartelera>{
-    const url = API_CARTELERA_ADD;
-    return this.http.get<Cartelera>(url);
+    return this.http.post<Cartelera>(API_CARTELERA_ADD,cartelera);
   }
 }

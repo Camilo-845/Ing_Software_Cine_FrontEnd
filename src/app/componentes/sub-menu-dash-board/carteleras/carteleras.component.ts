@@ -5,11 +5,12 @@ import { Cartelera } from '@interfaces/cartelera';
 import { CarteleraService } from '@services/api/cartelera.service';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { AgregarComponent } from './agregar/agregar.component';  // Importa el componente Agregar
 
 @Component({
   selector: 'app-carteleras',
   standalone: true,
-  imports: [RouterModule, CommonModule, FormsModule],
+  imports: [RouterModule, CommonModule, FormsModule, AgregarComponent],  // Añade AgregarComponent aquí
   templateUrl: './carteleras.component.html',
   styleUrl: './carteleras.component.css',
 })
@@ -50,15 +51,16 @@ export class CartelerasComponent implements OnInit, OnDestroy {
 
   toggleSearchInput(): void {
     this.showSearchInput = !this.showSearchInput;
+    this.loadCarteleras();
   }
 
   searchCartelera(){
     if (this.searchName.trim()) {
-      this.carteleraSubscription = this.carteleraService.getIdByName(this.searchName)
+      this.carteleraSubscription = this.carteleraService.getIdUbicacionByName(this.searchName)
       .subscribe({
         next: (data:  any) => {
-          let indice = data[0].idUbicacion;
-          this.carteleraSubscription = this.carteleraService.getByUbicacionCine(indice)
+          let idCine = data[0].idUbicacion;
+          this.carteleraSubscription = this.carteleraService.getCartelerasByidUbicacionCine(idCine)
           .subscribe({
             next: (data2: Cartelera[]) =>{
               this.carteleras = data2
@@ -71,7 +73,7 @@ export class CartelerasComponent implements OnInit, OnDestroy {
           
         },
         error: (error) => {
-          console.error('Error al encontrar el indice:', error);
+          console.error('Error al encontrar el id del Cine', error);
         }
       })
     }
@@ -90,4 +92,5 @@ export class CartelerasComponent implements OnInit, OnDestroy {
       this.loadCarteleras();
     }
   }
+
 }

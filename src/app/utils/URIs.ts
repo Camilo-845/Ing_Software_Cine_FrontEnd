@@ -14,7 +14,9 @@ export const API_CLIENTE_LOCATIONS = API_CLIENTE + '/getLocations';
 export const API_CARTELERA = API_URL + '/billboard';
 export const API_CARTELERA_LIST = API_CARTELERA + '/getall';
 export const API_CARTELERA_PAGINATION = API_CARTELERA + '/paginacion';
-export const API_CARTELERA_ADD = API_CARTELERA + '/add';
+export const API_CARTELERA_ADD = API_CARTELERA + '/addcito';
 export const API_CARTELERA_UPDATE = API_CARTELERA + '/update';
 export const API_CARTELERA_DELETE = API_CARTELERA + '/delete';
+export const API_CINE_LIST_FOR_CARTELERA = API_CARTELERA_LIST + '/cine';
+export const API_PELICULA_LIST_FOR_CARTELERA = API_CARTELERA_LIST + '/pelicula';
 
