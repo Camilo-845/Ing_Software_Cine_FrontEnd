@@ -1,6 +1,22 @@
 <div _ngcontent-ng-c2492414721="" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 _ngcontent-ng-c2492414721="" style="margin-top: 10px;" class="h2">Carteleras</h1>
 </div>
+
+<div style="max-width: 95%; margin-left: 20px;">
+  <input *ngIf="showSearchInput"
+  [(ngModel)]="searchName"
+  type="text"
+  placeholder="Buscar por ubicación"
+  class="form-control mx-2"/>
+
+  <button *ngIf="showSearchInput"
+  class="btn btn-primary search-button px-2 py-1 mx-2"
+  style="margin-top: 10px;"
+  (click)="searchCartelera()">
+  Buscar
+  </button>
+</div>
+
 <div class="table-container">
   <table>
     <thead>
@@ -16,9 +32,9 @@
             (click)="2">
             <i class="fas fa-plus"></i>
           </button>
-          <button
-            class="btn btn-primary search-button px-2 py-1 mx-2"
-            (click)="1">
+
+          <button class="btn btn-primary add-button px-2 py-1 mx-2" 
+            (click)="toggleSearchInput()">
             <i class="bi bi-search"></i>
           </button>
         </th>

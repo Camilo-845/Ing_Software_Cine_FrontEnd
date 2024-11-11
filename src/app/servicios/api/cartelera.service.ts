@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cartelera } from '@interfaces/cartelera';
-import { API_CARTELERA_PAGINATION, API_CARTELERA } from '@utils/URIs';
+import { API_CARTELERA_PAGINATION, API_CARTELERA_LIST, API_CARTELERA_ADD } from '@utils/URIs';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,8 +16,18 @@ export class CarteleraService {
     return this.http.get<Cartelera[]>(url);
   }
 
-  getByUbicacionCine(nombre:string): Observable<Cartelera>{
-    const url = `${API_CARTELERA}/${nombre}`;
+  getIdByName(nombre:string):Observable<any>{
+    const url = `${API_CARTELERA_LIST}/nombre/${nombre}`;
+    return this.http.get<any>(url);
+  }
+
+  getByUbicacionCine(idUbicacion:number): Observable<Cartelera[]>{
+    const url = `${API_CARTELERA_LIST}/id/${idUbicacion}`;
+    return this.http.get<Cartelera[]>(url);
+  }
+
+  createCartelera(cartelera: Cartelera):Observable<Cartelera>{
+    const url = API_CARTELERA_ADD;
     return this.http.get<Cartelera>(url);
   }
 }
