@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,6 +7,8 @@ import {
 import { CineService } from '../../../../servicios/api/cine.service';
 import { Cine } from '../../../../interfaces/cine';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-agregar',
@@ -15,7 +17,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './agregar.component.html',
   styleUrls: ['./agregar.component.css'],
 })
-export class AgregarComponent {
+export class AgregarComponent implements OnDestroy{
   private cineService = inject(CineService);
   private formBuilder = inject(FormBuilder);
 
@@ -24,6 +26,8 @@ export class AgregarComponent {
     nombreCine: '',
   });
   idNewCine = null;
+  private cineSubscription: Subscription | null = null;
+
 
   onSubmit(): void {
     const { idUbicacion, nombreCine } = this.createForm.value;
@@ -40,5 +44,9 @@ export class AgregarComponent {
     this.cineService.createCine(cine).subscribe((data) => {
       this.idNewCine = data.idCine;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.cineSubscription?.unsubscribe();
   }
 }

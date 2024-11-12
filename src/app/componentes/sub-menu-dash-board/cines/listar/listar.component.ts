@@ -1,10 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { TableListarComponent } from '../../../utils/table-listar/table-listar.component';
 import { Cine } from '../../../../interfaces/cine';
 import { CineService } from '../../../../servicios/api/cine.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CineDataService } from '../../../../servicios/api/shared/cinedata.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-listar',
@@ -14,7 +16,7 @@ import { CineDataService } from '../../../../servicios/api/shared/cinedata.servi
   styleUrl: './listar.component.css',
 })
 
-export class ListarComponent implements OnInit {
+export class ListarComponent implements OnInit, OnDestroy {
   private cineService = inject(CineService);
   private cineDataService = inject(CineDataService);
   private router = inject(Router);
@@ -22,6 +24,9 @@ export class ListarComponent implements OnInit {
   private limit = 10;
   cines: Cine[] = [];
   headers: string[] = ['ID', 'Nombre Cine', 'ID Ubicación'];
+
+  private getCinesSubscription: Subscription | null = null;
+
 
   ngOnInit(): void {
     this.getCinesPagination();
@@ -47,7 +52,7 @@ export class ListarComponent implements OnInit {
 
   private getCinesPagination(): void {
     this.cines = [];
-    this.cineService
+    this.getCinesSubscription = this.cineService
       .getPagination(this.page, this.limit)
       .subscribe((data) => {
         this.cines = data.map((cine) => ({
@@ -56,6 +61,11 @@ export class ListarComponent implements OnInit {
           idUbicacion: cine.idUbicacion,
         }));
       });
+  }
+
+  ngOnDestroy(): void {
+    // Desuscribirse para evitar fugas de memoria
+    this.getCinesSubscription?.unsubscribe();
   }
 }
 

@@ -1,9 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { ButtonComponent } from '../../../utils/button/button.component';
 import { TableComponent } from '../../../utils/table/table.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CineService } from '../../../../servicios/api/cine.service';
 import { Cine } from '../../../../interfaces/cine';
+import { Subscription } from 'rxjs';
+
 
 
 @Component({
@@ -13,8 +15,10 @@ import { Cine } from '../../../../interfaces/cine';
   templateUrl: './buscar.component.html',
   styleUrls: ['./buscar.component.css'],
 })
-export class BuscarComponent {
+export class BuscarComponent implements OnDestroy{
   private cineService = inject(CineService);
+  private cineSubscription: Subscription | null = null;
+
   inputForm = new FormGroup({
     idInput: new FormControl(''),
   });
@@ -35,13 +39,20 @@ export class BuscarComponent {
 
 
   private getCineById(id: number): void {
-    this.cineService.getById(id).subscribe((cine) => {
+    this.cineSubscription = this.cineService.getById(id).subscribe((cine) => {
         this.cine.push({
           idCine: cine.idCine,             // Accede a la propiedad dentro del objeto 'cine'
           nombreCine: cine.nombreCine,     // Accede a la propiedad dentro del objeto 'cine'
           idUbicacion: cine.idUbicacion,   // Accede a la propiedad dentro del objeto 'cine'
         });
       });
+  }
+
+  // Implementamos ngOnDestroy para desuscribirnos
+  ngOnDestroy(): void {
+    if (this.cineSubscription) {
+      this.cineSubscription.unsubscribe();
+    }
   }
 }
 
