@@ -4,6 +4,7 @@ import { CineService } from '../../../../servicios/api/cine.service';
 import { Cine } from '../../../../interfaces/cine';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CineDataService } from '../../../../servicios/api/shared/cinedata.service';
 
 @Component({
   selector: 'app-editar',
@@ -14,6 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditarComponent implements OnInit {
   private cineService = inject(CineService);
+  private cineDataService = inject(CineDataService);
   private formBuilder = inject(FormBuilder);
   private route = inject(ActivatedRoute);
   private router = inject(Router);        // Usamos Router para redirigir
@@ -28,6 +30,15 @@ export class EditarComponent implements OnInit {
   updated = false;
 
   ngOnInit(): void {
+    // Escuchar el idCine del servicio y cargar los datos automáticamente
+    this.cineDataService.cineId$.subscribe((idCine) => {
+      if (idCine !== null) {
+        this.editForm.patchValue({ idCine: idCine.toString() });
+        this.loadCineData(idCine);
+      }
+    });
+
+
     // this.cineId = Number(this.route.snapshot.paramMap.get('id'));
     // console.log('ID obtenido desde la URL:', this.cineId); // Agrega este log para verificar el ID
   

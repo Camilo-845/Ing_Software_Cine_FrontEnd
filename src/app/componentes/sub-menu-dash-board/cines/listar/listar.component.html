@@ -1,11 +1,26 @@
 <div class="table-responsive">
-  <app-table [headers]="headers" [data]="cines"></app-table>
+  <app-table-listar 
+    [headers]="headers" 
+    [data]="cines" 
+    (editEvent)="onEdit($event)">
+  </app-table-listar>
+
   <div>
     <button class="btn btn-primary" (click)="onBack()">Anterior</button>
     <button class="btn btn-primary mx-3" (click)="onAdd()">Siguiente</button>
   </div>
-  <!-- <div *ngFor="let cine of cines">
-    <button class="btn btn-warning" (click)="onEdit(cine.idCine)" *ngIf="cine.idCine !== undefined" >Editar</button>
-  </div> -->
 </div>
 
+
+<!-- <div class="table-responsive">
+  <app-table [headers]="headers" [data]="cines"></app-table>
+  <div *ngFor="let cine of cines">
+    <button class="btn btn-warning" (click)="onEdit(cine.idCine)" *ngIf="cine.idCine !== undefined" >Editar</button>
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="onBack()">Anterior</button>
+    <button class="btn btn-primary mx-3" (click)="onAdd()">Siguiente</button>
+  </div>
+  
+</div>
+ -->
