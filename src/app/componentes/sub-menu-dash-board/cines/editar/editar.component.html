@@ -1,44 +1,21 @@
+
 <div>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-    <div class="form-row">
-      <!-- Campo para el ID Cine que el usuario podrá escribir -->
-      <div class="form-group col-md-4 mb-4">
-        <label for="idCine">ID Cine</label>
-        <input
-          formControlName="idCine"
-          type="number"
-          class="form-control"
-          id="idCine"
-          placeholder="ID Cine"
-          (blur)="onLoadCineData()"
-        />
+  <form>
+      <div class="form-row">
+          <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
+              <label for="inputCartelera">Id cine</label>
+              <input type="Cartelera" class="form-control" id="inputCartelera" placeholder="Id Cartelera">
+          </div>
+          <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
+              <label for="inputCine">Id ubicación</label>
+              <input type="Cine" class="form-control" id="inputCine" placeholder="Id Cine">
+          </div>
+          <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
+              <label for="inputPelicula">Nombre Cine</label>
+              <input type="Pelicula" class="form-control" id="inputPelicula" placeholder="Id Pelicula">
+          </div>
       </div>
-      <!-- Campo para el ID Ubicación que el usuario podrá escribir -->
-      <div class="form-group col-md-4 mb-4">
-        <label for="idUbicacion">ID Ubicación</label>
-        <input
-          formControlName="idUbicacion"
-          type="number"
-          class="form-control"
-          id="idUbicacion"
-          placeholder="ID Ubicación"
-        />
-      </div>
-      <!-- Campo para el nombre del cine que el usuario podrá escribir -->
-      <div class="form-group col-md-4 mb-4">
-        <label for="nombreCine">Nombre Cine</label>
-        <input
-          formControlName="nombreCine"
-          type="text"
-          class="form-control"
-          id="nombreCine"
-          placeholder="Nombre del Cine"
-        />
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Editar</button>
-    <div *ngIf="updated">
-      <p>Cine actualizado con éxito.</p>
-    </div>
+      
+      <button type="submit" class="btn btn-primary">Editar</button>
   </form>
 </div>

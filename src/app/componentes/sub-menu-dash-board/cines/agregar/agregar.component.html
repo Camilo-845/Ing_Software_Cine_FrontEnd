@@ -1,34 +1,17 @@
+
 <div>
-  <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
-    <div class="form-row">
-      <div class="form-group col-md-4 mb-4">
-        <label for="idUbicacion">ID Ubicación</label>
-        <input
-          formControlName="idUbicacion"
-          type="number"
-          class="form-control"
-          id="idUbicacion"
-          placeholder="ID Ubicación"
-        />
-      </div>
-      <div class="form-group col-md-4 mb-4">
-        <label for="nombreCine">Nombre del Cine</label>
-        <input
-          formControlName="nombreCine"
-          type="text"
-          class="form-control"
-          id="name"
-          placeholder="Nombre del Cine"
-        />
-      </div>
-      
-    </div>
-    <button type="submit" class="btn btn-primary">Crear</button>
-    <div *ngIf="idNewCine">
-      <p>
-        Cine creado con id:
-        <strong>{{ idNewCine }}</strong>
-      </p>
-    </div>
+  <form>
+      <div class="form-row">
+          <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
+              <label for="inputCine">IidUbicacion</label>
+              <input type="Cine" class="form-control" id="inputCine" placeholder="Id Cine">
+          </div>
+          <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
+              <label for="inputPelicula">nombreCine</label>
+              <input type="Pelicula" class="form-control" id="inputPelicula" placeholder="Id Pelicula">
+          </div>
+      </div>      
+      <button type="submit" class="btn btn-primary">Crear</button>
   </form>
 </div>
+
