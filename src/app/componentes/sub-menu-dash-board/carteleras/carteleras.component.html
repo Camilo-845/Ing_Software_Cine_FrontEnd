@@ -1,33 +1,66 @@
-<style>
-    .sidebar-sticky {
-      position: sticky;
-      top: 50px; /* Fija el submenú en la parte superior */
-      z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
-      background-color: #fff; /* Fondo para evitar superposición visual con otros elementos */
-    }
-</style>
+<div _ngcontent-ng-c2492414721="" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 _ngcontent-ng-c2492414721="" style="margin-top: 10px;" class="h2">Carteleras</h1>
+</div>
 
+<div style="max-width: 95%; margin-left: 20px;">
+  <input *ngIf="showSearchInput"
+  [(ngModel)]="searchName"
+  type="text"
+  placeholder="Buscar por ubicación"
+  class="form-control mx-2"/>
 
-<div class="m-3">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Carteleras</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-text-bottom" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            This week
+  <button *ngIf="showSearchInput"
+  class="btn btn-primary search-button px-2 py-1 mx-2"
+  style="margin-top: 10px;"
+  (click)="searchCartelera()">
+  Buscar
+  </button>
+</div>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ubicación Cine</th>
+        <th>Pelicula</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Final</th>
+
+        <th>
+          <app-agregar></app-agregar>
+
+          <button class="btn btn-primary add-button px-2 py-1 mx-2" 
+            (click)="toggleSearchInput()">
+            <i class="bi bi-search"></i>
           </button>
-        </div>
-      </div>
-    <div class="btn-group mb-3" role="group" aria-label="Basic example">
-        <a [routerLink]="['listar']" type="button" class="btn btn-primary">listar</a>
-        <a [routerLink]="['buscar']" type="button" class="btn btn-primary">buscar</a>
-        <a [routerLink]="['agregar']" type="button" class="btn btn-primary">agregar</a>
-        <a [routerLink]="['editar']" type="button" class="btn btn-primary">editar</a>
-        <a [routerLink]="['eliminar']" type="button" class="btn btn-primary">eliminar</a>
-    </div>
-    <router-outlet></router-outlet>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cartelera of carteleras">
+        <td>{{cartelera.idPeliculaCartelera}}</td>
+        <td>{{cartelera.nombreUbicacion}}</td>
+        <td>{{cartelera.nombrePelicula}}</td>
+        <td>{{cartelera.fechaInicio | date}}</td>
+        <td>{{cartelera.fechaFinal | date}}</td>
+
+        <td>
+          <div>
+            <app-editar [cartelera]="cartelera"></app-editar>
+            
+            <app-eliminar [cartelera] = "cartelera"></app-eliminar>
+          </div>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="pagination">
+  <button class="btn" (click)="init()">Inicio</button>
+  <button class="btn" (click)="previousPage()" [disabled]="page === 1">Anterior</button>
+  <span>Página {{ page }}</span>
+  <button class="btn" (click)="nextPage()" [disabled]="page === total">Siguiente</button>
 </div>

@@ -1,0 +1,42 @@
+<nav aria-label="Page navigation" class="nav-pagination">
+  <ul class="pagination pagination-md">
+    <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
+      <button
+        type="button"
+        id="prev"
+        class="btn btn-secondary page-link"
+        (click)="handlePageChange('prev')"
+      >
+        <i class="bi bi-arrow-left"></i>
+      </button>
+    </li>
+
+    @for (p of getPages(); track $index) {
+    <li
+      [ngClass]="{ active: p === currentPage, current: p === currentPage }"
+      id="page{{ p }}"
+    >
+      <button
+        id="{{ p }}"
+        type="button"
+        class="btn page-link"
+        (click)="handlePageChange(p)"
+        (dblclick)="handleEditPage()"
+      >
+        {{ p }}
+      </button>
+    </li>
+    }
+
+    <li class="page-item" [ngClass]="{ disabled: currentPage === totalPages }">
+      <button
+        type="button"
+        id="next"
+        class="btn btn-primary page-link"
+        (click)="handlePageChange('next')"
+      >
+        <i class="bi bi-arrow-right"></i>
+      </button>
+    </li>
+  </ul>
+</nav>

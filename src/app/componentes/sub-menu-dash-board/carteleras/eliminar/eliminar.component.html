@@ -1,12 +1,14 @@
-<div>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-4 mb-4"> <!-- Solo margen inferior -->
-                <label for="inputCartelera">Id Cartelera</label>
-                <input type="Cartelera" class="form-control" id="inputCartelera" placeholder="Id Cartelera">
-            </div>
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Eliminar</button>
-    </form>
-</div>
+<button class="btn btn-danger px-2 py-1 mx-2"
+    (click)="openPopup()">
+    <i class="fas fa-trash-alt"></i>
+</button>
+<div *ngIf="showPopup" class="overlay">
+    <div class="confirm-popup">
+      <h3>¿Estás seguro de querer eliminar la cartelera con id {{cartelera.idPeliculaCartelera}}?</h3>
+      <div class="confirm-actions">
+        <button (click)="deleteCartelera()">Sí</button>
+        <button (click)="closePopup()">No</button>
+      </div>
+    </div>
+  </div>
+  
