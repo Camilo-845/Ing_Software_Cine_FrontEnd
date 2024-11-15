@@ -23,6 +23,8 @@ export const API_RESERVACIONES_LIST = API_RESERVACIONES + '/getall';
 export const API_RESERVACIONES_PAGINATION = API_RESERVACIONES + '/pagination';
 export const API_RESERVACIONES_DELETE = API_RESERVACIONES + '/delete';
 export const API_RESERVACIONES_ADD = API_RESERVACIONES + '/add';
+export const API_RESERVACIONES_UPDATE = API_RESERVACIONES + '/update';
+export const API_RESERVACIONES_GET = API_RESERVACIONES + '/get/';
 
 export const API_COMIDAS = API_URL + '/food';
 export const API_COMIDAS_LIST = API_COMIDAS + '/getall';

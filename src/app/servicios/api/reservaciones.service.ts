@@ -5,8 +5,10 @@ import{
     API_RESERVACIONES,
     API_RESERVACIONES_ADD,
     API_RESERVACIONES_DELETE,
+    API_RESERVACIONES_GET,
     API_RESERVACIONES_LIST,
-    API_RESERVACIONES_PAGINATION
+    API_RESERVACIONES_PAGINATION,
+    API_RESERVACIONES_UPDATE
 } from '../../utils/URIs';
 import { Reservacion } from "../../interfaces/reservacion";
 
@@ -36,5 +38,13 @@ export class ReservacionesService {
 
     public createReservacion(reservacion: Reservacion): Observable<any>{
         return this.httpClient.post<Reservacion>(API_RESERVACIONES_ADD, reservacion);
+    }
+
+    public findReservacion(id: number): Observable<any>{
+        return this.httpClient.get<Reservacion[]>(API_RESERVACIONES_GET + `${id}`);
+    }
+
+    public editReservacion(reservacion: Reservacion): Observable<any>{
+        return this.httpClient.put<Reservacion>(API_RESERVACIONES_UPDATE, reservacion);
     }
 }
