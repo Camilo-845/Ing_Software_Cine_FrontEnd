@@ -23,11 +23,10 @@ import { AgregarComponent as AgregarReservacion } from './componentes/sub-menu-d
 import { EditarComponent as EditarReservacion } from './componentes/sub-menu-dash-board/reservaciones/editar/editar.component';
 import { EliminarComponent as EliminarReservacion } from './componentes/sub-menu-dash-board/reservaciones/eliminar/eliminar.component';
 
-import { ListarComponent as ListarCine } from './componentes/sub-menu-dash-board/cines/listar/listar.component';
+import { ListarComponent  as ListarCine } from './componentes/sub-menu-dash-board/cines/listar/listar.component';
 import { AgregarComponent as AgregarCine } from './componentes/sub-menu-dash-board/cines/agregar/agregar.component';
 import { EditarComponent as EditarCine } from './componentes/sub-menu-dash-board/cines/editar/editar.component';
-import { EliminarComponent as EliminarCine } from './componentes/sub-menu-dash-board/cines/eliminar/eliminar.component';
-
+import { EliminarComponent  as EliminarCine } from './componentes/sub-menu-dash-board/cines/eliminar/eliminar.component';
 import { BuscarComponent as BuscarCine } from './componentes/sub-menu-dash-board/cines/buscar/buscar.component';
 
 import { ListarComponent as ListarCartelera } from './componentes/sub-menu-dash-board/carteleras/listar/listar.component';
@@ -81,6 +80,7 @@ export const routes: Routes = [
           { path: 'buscar', component: BuscarCine },
           { path: 'agregar', component: AgregarCine },
           { path: 'editar', component: EditarCine },
+          { path: 'editar/:id', component: EditarCine },  // Ruta con parámetro id
           { path: 'eliminar', component: EliminarCine },
         ],
       },
