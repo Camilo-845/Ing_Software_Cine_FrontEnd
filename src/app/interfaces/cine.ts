@@ -1,4 +1,7 @@
-export interface Cine{
-    idCine?: number;
-    nombreUbicacion: string;
+export interface Cine {
+  idCine?: number;
+  idUbicacion: number;
+  nombreCine: string;
+  nombreUbicacion?: string;
 }
+

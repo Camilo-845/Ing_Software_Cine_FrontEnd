@@ -3,6 +3,8 @@
 		{
 			"path": "."
 		}
-	],
-	"settings": {}
+  ],
+  "settings": {
+    "workbench.colorTheme": "Abyss"
+  }
 }
